@@ -4,4 +4,5 @@
 
 <div class="font-comic">
     <Navbar />
+    <slot/>
 </div>
