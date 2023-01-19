@@ -26,6 +26,7 @@
         return  setInterval(() => {
                 if (curPopIndex < emoticonProps.length) {
                     emoticonProps[curPopIndex].icon = curEmoticon[curPopIndex];
+                    emoticonProps[curPopIndex].hasPopped = true;
                     console.info(emoticonProps);
                 }else {
                     endCount++;
@@ -54,14 +55,14 @@
 </script>
 
 <div
-        class="max-w-screen-sm mx-auto border-t-2 border-b-2 border-dark dark:border-orange border-dashed py-2"
+        class="max-w-screen-sm mx-auto py-1"
 >
     <ul class="mx-auto max-w-md flex flex-row justify-center">
         {#each emoticonProps as prop}
-            <li class="text-3xl w-8">
-                <h2 class="dark:text-yellow-300 {prop.hasPopped ? 'anim_popOut' : ''}">
+            <li class="w-3.5">
+                <h6 class="dark:text-yellow-300 {prop.hasPopped ? 'anim_popOut' : ''}">
                     {prop.icon}
-                </h2>
+                </h6>
             </li>
         {/each}
     </ul>
