@@ -6,7 +6,6 @@
 
     onFrame(() => {
         spin = spin + 0.01;
-        console.log(spin);
     })
 </script>
 
