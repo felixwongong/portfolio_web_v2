@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"asciimoticon-core": "^1.2.2",
+		"firebase": "^9.16.0",
 		"svelte-cubed": "^0.2.1",
 		"three": "^0.148.0"
 	}

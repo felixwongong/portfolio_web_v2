@@ -3,10 +3,7 @@
 
     import core from "asciimoticon-core";
 
-    let emoticonProps = [];
-    let popIntervalTime = 1000;
-    let emoticonSet = core.faces;
-    let curEmoticon = null;
+    let emoticonProps = [], popIntervalTime = 1000, emoticonSet = core.faces, curEmoticon = null;
 
     function setEmoticon() {
         const keys = Object.keys(emoticonSet);
@@ -23,23 +20,21 @@
     }
 
     function CreateInterval() {
-        return  setInterval(() => {
-                if (curPopIndex < emoticonProps.length) {
-                    emoticonProps[curPopIndex].icon = curEmoticon[curPopIndex];
-                    emoticonProps[curPopIndex].hasPopped = true;
-                    console.info(emoticonProps);
-                }else {
-                    endCount++;
-                    console.log(`end: ${endCount}`)
-                    if(endCount >= 5) {
-                        clearInterval(interval);
-                        setEmoticon();
-                        curPopIndex = 0;
-                        interval = CreateInterval()
-                    }
+        return setInterval(() => {
+            if (curPopIndex < emoticonProps.length) {
+                emoticonProps[curPopIndex].icon = curEmoticon[curPopIndex];
+                emoticonProps[curPopIndex].hasPopped = true;
+            } else {
+                endCount++;
+                if (endCount >= 5) {
+                    clearInterval(interval);
+                    setEmoticon();
+                    curPopIndex = 0;
+                    interval = CreateInterval()
                 }
-                curPopIndex++;
-            }, popIntervalTime)
+            }
+            curPopIndex++;
+        }, popIntervalTime)
     }
 
     let curPopIndex = 0;
@@ -55,7 +50,7 @@
 </script>
 
 <div
-        class="max-w-screen-sm mx-auto py-1"
+        class="max-w-screen-sm bottom-center py-1 overflow-visible {$$props.class}"
 >
     <ul class="mx-auto max-w-md flex flex-row justify-center">
         {#each emoticonProps as prop}
@@ -89,5 +84,12 @@
         animation-name: popOut;
         animation-duration: 0.15s;
         animation-timing-function: linear;
+    }
+
+
+    .bottom-center {
+        bottom: 7%;
+        right: 30%;
+        left: 30%;
     }
 </style>
