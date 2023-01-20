@@ -1,3 +1,6 @@
 {
-	"/": []
+	"/": [],
+	"/work": [
+		"src/routes/work/+server.js"
+	]
 }
