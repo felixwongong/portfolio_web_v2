@@ -1,5 +1,8 @@
 {
 	"/": [],
+	"/user/login": [
+		"src/routes/user/login/+server.js"
+	],
 	"/work": [
 		"src/routes/work/+server.js"
 	]

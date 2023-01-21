@@ -1,21 +1,23 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, MEASUREMENT_ID } = process.env;
 const firebaseConfig = {
-    apiKey: "AIzaSyDYl3e8mgK-Yz4B4je44y0M-noyeUv8y4I",
-    authDomain: "cofydev-41e1e.firebaseapp.com",
-    projectId: "cofydev-41e1e",
-    storageBucket: "cofydev-41e1e.appspot.com",
-    messagingSenderId: "968658513934",
-    appId: "1:968658513934:web:8019861b8e43767786cc5f",
-    measurementId: "G-Q1M4N0CZY0"
+    apiKey: API_KEY,
+    authDomain: AUTH_DOMAIN,
+    projectId: PROJECT_ID,
+    storageBucket: STORAGE_BUCKET,
+    messagingSenderId: MESSAGING_SENDER_ID,
+    appId: APP_ID,
+    measurementId: MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -23,10 +25,11 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 const workCollection = collection(db, "Work");
+const userCollection = collection(db, "User");
 
 // const querySnapshot = await getDocs(collection(db, "Work"));
 // querySnapshot.forEach((doc) => {
 //     console.log(`${doc.id} => ${doc.data()}`);
 // });
 
-export {db, getDocs, workCollection};
+export {db, getDocs, addDoc, setDoc, doc, workCollection, userCollection};

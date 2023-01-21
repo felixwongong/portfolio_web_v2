@@ -44,8 +44,5 @@
             </div>
         </nav>
     </div>
-    <!-- This is a padding for fixed navbar -->
-<!--    <div class="w-full {navHeight}">-->
-<!--    </div>-->
 </div>
 

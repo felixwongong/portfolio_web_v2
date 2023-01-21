@@ -1,8 +1,9 @@
-import {json} from '@sveltejs/kit';
+import {error, json} from '@sveltejs/kit';
 
-import {getDocs, workCollection} from "$lib/firebase.js";
+import {getDocs, setDoc, doc, db, workCollection} from "$lib/google/firestore";
+import {LoggedIn} from "$lib/google/auth.js";
 
-
+/* eslint-disable */
 export async function GET() {
     let works = [];
 
@@ -16,3 +17,18 @@ export async function GET() {
 
     return json(works);
 }
+
+//This is only for admin
+/** @type {import('./$types').RequestHandler} */
+export async function POST({request}) {
+    if(!LoggedIn()) throw error(401, {message: "Unauthorized"});
+    const reqJson = await request.json();
+    const newWork = {
+        ...reqJson
+    }
+    const res = await setDoc(doc(db, "Work", reqJson.slug), newWork);
+
+    return json(reqJson);
+}
+
+/* eslint-enable */
