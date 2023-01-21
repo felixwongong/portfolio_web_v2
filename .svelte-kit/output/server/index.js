@@ -2154,7 +2154,7 @@ async function respond(request, options, state) {
     fetch: null,
     getClientAddress: state.getClientAddress || (() => {
       throw new Error(
-        `${"@sveltejs/adapter-vercel"} does not specify getClientAddress. Please raise an issue`
+        `${"@sveltejs/adapter-auto"} does not specify getClientAddress. Please raise an issue`
       );
     }),
     locals: {},
@@ -2447,7 +2447,7 @@ class Server {
       app_template,
       app_template_contains_nonce: false,
       error_template,
-      version: "1674288652838"
+      version: "1674289367467"
     };
   }
   /**
