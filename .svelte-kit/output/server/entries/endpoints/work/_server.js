@@ -1,4 +1,4 @@
-import { j as json, e as error } from "../../../chunks/index2.js";
+import { j as json, e as error } from "../../../chunks/index.js";
 import { w as workCollection, L as LoggedIn, d as db } from "../../../chunks/auth.js";
 import { getDocs, setDoc, doc } from "firebase/firestore";
 async function GET() {

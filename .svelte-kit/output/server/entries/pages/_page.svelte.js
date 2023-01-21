@@ -1,4 +1,4 @@
-import { g as getContext, s as setContext, o as onDestroy, c as create_ssr_component, d as add_attribute, f as createEventDispatcher, v as validate_component, e as escape, h as each } from "../../chunks/index.js";
+import { g as getContext, s as setContext, o as onDestroy, c as create_ssr_component, d as add_attribute, f as createEventDispatcher, v as validate_component, e as escape, h as each } from "../../chunks/index3.js";
 import * as THREE from "three";
 import { PerspectiveCamera, Vector3 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";

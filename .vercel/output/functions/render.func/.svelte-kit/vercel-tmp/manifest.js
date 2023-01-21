@@ -4,7 +4,7 @@ export const manifest = {
 	assets: new Set(["favicon.ico","favicon.png","global.css"]),
 	mimeTypes: {".ico":"image/vnd.microsoft.icon",".png":"image/png",".css":"text/css"},
 	_: {
-		entry: {"file":"_app/immutable/start-827669a0.js","imports":["_app/immutable/start-827669a0.js","_app/immutable/chunks/index-28f7c6ab.js","_app/immutable/chunks/singletons-9c26a840.js","_app/immutable/chunks/index-db9b7afa.js"],"stylesheets":[],"fonts":[]},
+		entry: {"file":"_app/immutable/start-d17ff862.js","imports":["_app/immutable/start-d17ff862.js","_app/immutable/chunks/index-e2dc4700.js","_app/immutable/chunks/singletons-36c5a035.js","_app/immutable/chunks/index-f96438b6.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			() => import('../output/server/nodes/0.js'),
 			() => import('../output/server/nodes/1.js'),

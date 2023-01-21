@@ -1,4 +1,4 @@
-import { j as json } from "../../../../chunks/index2.js";
+import { j as json } from "../../../../chunks/index.js";
 import { E as EmailLogin, S as SignOut } from "../../../../chunks/auth.js";
 async function POST({ request }) {
   const reqJson = await request.json();
