@@ -22,6 +22,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+console.log("Firebase Initialized");
 
 const db = getFirestore(app);
 const workCollection = collection(db, "Work");
