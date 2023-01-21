@@ -1,8 +1,6 @@
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
-import * as dotenv from "dotenv";
-dotenv.config();
 const { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, MEASUREMENT_ID } = process.env;
 const firebaseConfig = {
   apiKey: API_KEY,
@@ -14,6 +12,7 @@ const firebaseConfig = {
   measurementId: MEASUREMENT_ID
 };
 const app = initializeApp(firebaseConfig);
+console.log("Firebase Initialized");
 const db = getFirestore(app);
 const workCollection = collection(db, "Work");
 collection(db, "User");

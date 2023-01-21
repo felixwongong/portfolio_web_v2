@@ -1,0 +1,91 @@
+{
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js",
+      "_server-internal.js"
+    ]
+  },
+  "src/routes/user/login/+server.js": {
+    "file": "entries/endpoints/user/login/_server.js",
+    "src": "src/routes/user/login/+server.js",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_auth.js"
+    ]
+  },
+  "src/routes/work/+server.js": {
+    "file": "entries/endpoints/work/_server.js",
+    "src": "src/routes/work/+server.js",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_auth.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index3.js",
+      "_index2.js"
+    ],
+    "assets": [
+      "_app/immutable/assets/sun-79eee5b4.gif",
+      "_app/immutable/assets/moon-39907e0c.gif"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index3.js"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index3.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page-c55a568b.css"
+    ]
+  },
+  ".svelte-kit/generated/server-internal.js": {
+    "file": "internal.js",
+    "src": ".svelte-kit/generated/server-internal.js",
+    "isEntry": true,
+    "imports": [
+      "_server-internal.js"
+    ]
+  },
+  "_index.js": {
+    "file": "chunks/index.js"
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "imports": [
+      "_index3.js"
+    ]
+  },
+  "_server-internal.js": {
+    "file": "chunks/server-internal.js",
+    "imports": [
+      "_index3.js"
+    ]
+  },
+  "_index3.js": {
+    "file": "chunks/index3.js"
+  },
+  "_auth.js": {
+    "file": "chunks/auth.js"
+  }
+}
