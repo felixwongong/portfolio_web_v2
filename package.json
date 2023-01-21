@@ -38,7 +38,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/kit": "^1.0.0",
 		"@sentry/node": "^7.13.0",
 		"@sentry/tracing": "^7.13.0",
 		"asciimoticon-core": "^1.2.2",
