@@ -1,4 +1,4 @@
-import vercel from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-netlify';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -9,7 +9,7 @@ const config = {
 
 	kit: {
 		// default options are shown
-		adapter: vercel({
+		adapter: adapter({
 			// if true, will deploy the app using edge functions
 			// (https://vercel.com/docs/concepts/functions/edge-functions)
 			// rather than serverless functions
@@ -24,7 +24,6 @@ const config = {
 			split: false
 		})
 	}
-
 };
 
 export default config;
