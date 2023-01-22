@@ -557,10 +557,6 @@ video {
   position: absolute;
 }
 
-.relative{
-  position: relative;
-}
-
 .bottom-0{
   bottom: 0px;
 }
@@ -583,6 +579,10 @@ video {
 
 .z-50{
   z-index: 50;
+}
+
+.m-auto{
+  margin: auto;
 }
 
 .mx-auto{
