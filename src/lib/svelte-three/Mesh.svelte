@@ -1,7 +1,8 @@
 <script lang="ts">
-    import {createEventDispatcher} from "svelte";
-    import {BoxGeometry, Mesh, MeshBasicMaterial} from "three";
-    import {ObjectEvent} from "./ObjectEvent";
+    import {createEventDispatcher, getContext} from "svelte";
+    import {BoxGeometry, Mesh, MeshBasicMaterial, Scene} from "three";
+    import {ContextKey} from "./ContextKey";
+    const scene: Scene = getContext(ContextKey.SCENE);
 
     const dispatch = createEventDispatcher();
 
@@ -15,6 +16,5 @@
     const material = new MeshBasicMaterial({color: 0x44aa88});
 
     mesh = new Mesh(geometry, material);
-
-    dispatch(ObjectEvent.INSTANTIATED);
+    scene.add(mesh);
 </script>

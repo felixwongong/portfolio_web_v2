@@ -1,9 +1,8 @@
 <script lang="ts">
-    import * as THREE from "three";
-    import Perspective from "./Perspective.svelte";
-    import {PerspectiveCamera, WebGLRenderer} from "three";
-    import Scene from "./Scene.svelte";
-    import {onDestroy, onMount} from "svelte";
+    import {PerspectiveCamera, WebGLRenderer, Scene} from "three";
+    import {onDestroy, onMount, setContext} from "svelte";
+    import {ContextKey} from "./ContextKey";
+    import Mesh from "./Mesh.svelte";
 
     let resizeObserver: ResizeObserver;
 
@@ -12,7 +11,10 @@
     let renderer: WebGLRenderer;
 
     let camera: PerspectiveCamera;
-    let mainScene: THREE.Scene;
+    let mainScene: Scene;
+
+    setContext(ContextKey.SET_CAM, (c: PerspectiveCamera) => camera = c);
+    setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
 
     function Update(time: number) {
         renderer.render(mainScene, camera);
@@ -37,6 +39,10 @@
 
             renderer.setSize(width, height);
         }
+    }
+
+    function SetCamera(newCam: PerspectiveCamera) {
+        camera = newCam;
     }
 
     onMount(() => {
@@ -68,7 +74,6 @@
  -->
 <div id="container" class="{$$props.class}" bind:this={container}>
     <canvas bind:this={threeCanvas} class="w-full h-full">
-        <Scene bind:scene={mainScene}></Scene>
-        <Perspective bind:camera={camera}/>
+        <slot/>
     </canvas>
 </div>

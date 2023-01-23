@@ -1,20 +1,14 @@
 <script lang="ts">
-    import {Object3D, Scene} from "three";
-    import Mesh from "./Mesh.svelte";
-    import {onMount} from "svelte";
-
-    let rootMesh;
+    import {Scene} from "three";
+    import {getContext, setContext} from "svelte";
+    import {ContextKey} from "./ContextKey";
 
     export let scene: Scene;
 
     scene = new Scene();
-
-    onMount(() => {
-        if(rootMesh != null) {
-            scene.add(rootMesh);
-        }
-    })
+    const SetScene = getContext(ContextKey.SET_SCENE);
+    SetScene(scene);
+    setContext(ContextKey.SCENE, scene);
 </script>
 
-<Mesh bind:mesh={rootMesh}>
-</Mesh>
+<slot></slot>
