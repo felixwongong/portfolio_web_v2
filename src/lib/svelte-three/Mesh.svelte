@@ -1,13 +1,13 @@
 <script lang="ts">
     import {createEventDispatcher, getContext} from "svelte";
-    import {BoxGeometry, Mesh, MeshBasicMaterial, Scene} from "three";
+    import {BoxGeometry, Euler, Mesh, MeshBasicMaterial, Scene} from "three";
     import {ContextKey} from "./ContextKey";
+
     const scene: Scene = getContext(ContextKey.SCENE);
     const Update = getContext(ContextKey.UPDATE);
 
-    const dispatch = createEventDispatcher();
-
     export let mesh:Mesh;
+    export let rotation: Euler = new Euler();
 
     const boxWidth = 1;
     const boxHeight = 1;
@@ -17,6 +17,13 @@
     const material = new MeshBasicMaterial({color: 0x44aa88});
 
     mesh = new Mesh(geometry, material);
-    scene.add(mesh);
 
+    Update(() => {
+        if(rotation === mesh.rotation) return;
+        mesh.rotation.x = rotation.x;
+        mesh.rotation.y = rotation.y;
+        mesh.rotation.z = rotation.z;
+    })
+
+    scene.add(mesh);
 </script>

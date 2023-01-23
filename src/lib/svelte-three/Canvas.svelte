@@ -24,7 +24,6 @@
         renderer.render(mainScene, camera);
 
         for(let i = 0; i < updateActions.length; i++) {
-            console.log("doing update?")
             await updateActions[i]();
         }
 
