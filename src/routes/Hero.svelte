@@ -18,7 +18,7 @@
     <Canvas class="w-screen h-screen">
         <Scene>
             <GameObject>
-                <Mesh></Mesh>
+                <Mesh slot="components"></Mesh>
             </GameObject>
         </Scene>
         <Perspective />
