@@ -3,6 +3,7 @@
     import {BoxGeometry, Mesh, MeshBasicMaterial, Scene} from "three";
     import {ContextKey} from "./ContextKey";
     const scene: Scene = getContext(ContextKey.SCENE);
+    const Update = getContext(ContextKey.UPDATE);
 
     const dispatch = createEventDispatcher();
 
@@ -17,4 +18,5 @@
 
     mesh = new Mesh(geometry, material);
     scene.add(mesh);
+
 </script>

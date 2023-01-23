@@ -1,8 +1,9 @@
 <script lang="ts">
-    import {PerspectiveCamera, WebGLRenderer, Scene} from "three";
+    import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
-    import Mesh from "./Mesh.svelte";
+
+    type OnUpdate = () => Promise<void>;
 
     let resizeObserver: ResizeObserver;
 
@@ -12,12 +13,20 @@
 
     let camera: PerspectiveCamera;
     let mainScene: Scene;
+    let updateActions: OnUpdate[] = [];
 
     setContext(ContextKey.SET_CAM, (c: PerspectiveCamera) => camera = c);
     setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
+    setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
 
-    function Update(time: number) {
+
+    async function Update(time: number) {
         renderer.render(mainScene, camera);
+
+        for(let i = 0; i < updateActions.length; i++) {
+            console.log("doing update?")
+            await updateActions[i]();
+        }
 
         requestAnimationFrame(Update);
     }
@@ -39,10 +48,6 @@
 
             renderer.setSize(width, height);
         }
-    }
-
-    function SetCamera(newCam: PerspectiveCamera) {
-        camera = newCam;
     }
 
     onMount(() => {
@@ -72,7 +77,7 @@
   </SavingsCard>
   ```
  -->
-<div id="container" class="{$$props.class}" bind:this={container}>
+<div bind:this={container} class="{$$props.class}" id="container">
     <canvas bind:this={threeCanvas} class="w-full h-full">
         <slot/>
     </canvas>
