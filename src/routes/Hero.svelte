@@ -6,6 +6,8 @@
     import GameObject from "$lib/svelte-three/GameObject.svelte";
     import Rotator from "$lib/svelte-three-custom/Rotator.svelte";
 
+    import chair from "$lib/assets/model/chair.glb";
+
     let pixelRatio = 0.75;
     let spin = 0;
 </script>
@@ -14,7 +16,7 @@
     <Canvas class="w-screen h-screen">
         <Scene>
             <GameObject>
-                <Mesh slot="components"></Mesh>
+                <Mesh slot="components" src={chair}></Mesh>
                 <Rotator />
             </GameObject>
         </Scene>
