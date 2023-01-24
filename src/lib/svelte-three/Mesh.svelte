@@ -2,8 +2,7 @@
     import {getContext} from "svelte";
     import {BoxGeometry, Euler, Material, Mesh, MeshBasicMaterial, Scene} from "three";
     import {ContextKey} from "./ContextKey";
-    import type {Component} from "./ComponentClass/ComponentType";
-    import MeshComp from "./ComponentClass/MeshComp";
+    import {MeshComp} from "./ComponentClass/Locator";
 
     const AddComponent = getContext(ContextKey.ADD_COMP);
     const scene: Scene = getContext(ContextKey.SCENE);

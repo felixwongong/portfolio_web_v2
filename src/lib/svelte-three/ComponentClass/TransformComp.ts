@@ -1,4 +1,4 @@
-import {Component} from "./ComponentType";
+import {Component} from "./Component";
 import {Euler, Vector3} from "three";
 
 class TransformComp extends Component {

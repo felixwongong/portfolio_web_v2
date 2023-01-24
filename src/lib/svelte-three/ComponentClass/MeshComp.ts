@@ -1,4 +1,4 @@
-import {Component} from "./ComponentType";
+import {Component} from "./Component";
 import type {BoxGeometry, MeshBasicMaterial} from "three";
 import {Mesh} from "three";
 

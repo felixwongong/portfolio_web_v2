@@ -1,12 +1,22 @@
 <script lang="ts">
-    import {getContext} from "svelte";
+    import {getContext, onMount} from "svelte";
     import {ContextKey} from "./ContextKey";
-    import TransformComp from "./ComponentClass/Transform";
+    import {TransformComp} from "./ComponentClass/Locator";
     const  AddComponent = getContext(ContextKey.ADD_COMP);
+    const  GetComponent = getContext(ContextKey.GET_COMP);
+    const  Update = getContext(ContextKey.UPDATE);
 
-    let m_transform: TransformComp = new TransformComp()
+    AddComponent(new TransformComp());
 
-    AddComponent(m_transform);
+    let m_transform: TransformComp;
+
+    onMount(() => {
+       m_transform = GetComponent(TransformComp.name);
+    })
+
+    Update(() => {
+        console.log(m_transform.rotation.x)
+    })
 </script>
 
 <slot>

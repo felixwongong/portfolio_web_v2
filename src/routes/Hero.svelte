@@ -4,6 +4,7 @@
     import Scene from "$lib/svelte-three/Scene.svelte";
     import Mesh from "$lib/svelte-three/Mesh.svelte";
     import GameObject from "$lib/svelte-three/GameObject.svelte";
+    import Rotator from "$lib/svelte-three-custom/Rotator.svelte";
 
     let pixelRatio = 0.75;
     let spin = 0;
@@ -14,6 +15,7 @@
         <Scene>
             <GameObject>
                 <Mesh slot="components"></Mesh>
+                <Rotator />
             </GameObject>
         </Scene>
         <Perspective />
