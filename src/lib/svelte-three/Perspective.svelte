@@ -10,7 +10,8 @@
     const far = 5;
     export let camera;
     camera = new PerspectiveCamera(fov, aspect, near, far);
-    camera.position.z = 2;
+    camera.position.z = 2.5;
+    camera.position.y = 0.5;
 
     SetCamera(camera);
 </script>
