@@ -13,19 +13,19 @@
     let renderer: writable<WebGLRenderer> = writable();
 
     let camera = writable<PerspectiveCamera>();
-    let mainScene: Scene;
+    let mainScene = writable<Scene>();
     let updateActions: OnUpdate[] = [];
 
     setContext(ContextKey.CAM, camera);
     setContext(ContextKey.RENDER, renderer);
-    setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
+    setContext(ContextKey.SCENE, mainScene);
     setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
 
     let frameCount: number = 0;
     let curTime: number = 0;
 
     async function Update(time: number) {
-        $renderer.render(mainScene, $camera);
+        $renderer.render($mainScene, $camera);
 
         for(let i = 0; i < updateActions.length; i++) {
             await updateActions[i]();
@@ -68,7 +68,7 @@
         CanvasResize();
 
         const light = new AmbientLight( 0x404040, 6 ); // soft white light
-        mainScene.add(light)
+        $mainScene.add(light)
         requestAnimationFrame(Update);
     })
 

@@ -5,32 +5,35 @@
     import TransformComp from "./ComponentClass/TransformComp";
 
     import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+    import type {Writable} from "svelte/store";
+    import {MeshComp} from "./ComponentClass/Locator";
     const loader = new GLTFLoader();
 
     const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
-    const scene: Scene = getContext(ContextKey.SCENE);
+    const scene = getContext<Writable<Scene>>(ContextKey.SCENE);
     const Update = getContext(ContextKey.UPDATE);
 
     export let src:string;
 
     let transform: TransformComp = GetComponent(TransformComp.name);
 
-    let m_model: Group;
+    let m_mesh: MeshComp = new MeshComp();
 
     Update(() => {
-        if(!m_model || transform.rotation === m_model.rotation) return;
-        m_model.rotation.x = transform.rotation.x;
-        m_model.rotation.y = transform.rotation.y;
-        m_model.rotation.z = transform.rotation.z;
+        const mesh = m_mesh?.mesh;
+        if(!mesh || transform.rotation === mesh.rotation) return;
+        mesh.rotation.x = transform.rotation.x;
+        mesh.rotation.y = transform.rotation.y;
+        mesh.rotation.z = transform.rotation.z;
     })
 
-    AddComponent(m_model)
+    AddComponent(m_mesh)
 
 
     onMount(() => {
         loader.load(src, function (fbx) {
-            m_model = fbx.scene;
-            scene.add(m_model);
+            m_mesh.mesh = fbx.scene;
+            $scene.add(m_mesh.mesh);
         }, undefined, function (err) {
             console.log(err)
         })

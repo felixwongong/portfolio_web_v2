@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {setContext} from "svelte";
+    import {onMount, setContext} from "svelte";
     import type {Component, ComponentFunc} from "./ComponentClass/Component";
     import {ContextKey} from "./ContextKey.ts";
     import Transform from "./Transform.svelte";
@@ -20,6 +20,11 @@
             if (typeName == component.constructor.name) return component as T;
         }
     }
+
+    onMount(() => {
+        console.log('======================')
+        components.forEach(c => console.log(c))
+    })
 </script>
 
 <slot></slot>

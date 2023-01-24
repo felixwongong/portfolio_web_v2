@@ -1,17 +1,12 @@
 import {Component} from "./Component";
-import type {BoxGeometry, MeshBasicMaterial} from "three";
-import {Mesh} from "three";
+import {Group } from "three";
 
 class MeshComp extends Component {
-    material: MeshBasicMaterial;
-    geometry: BoxGeometry;
-    mesh: Mesh;
+    mesh?: Group = new Group();
 
-    constructor(material: MeshBasicMaterial, geometry: BoxGeometry) {
+    constructor(mesh?: Group) {
         super();
-        this.material = material;
-        this.geometry = geometry;
-        this.mesh = new Mesh(this.geometry, this.material);
+        this.mesh = mesh;
     }
 }
 

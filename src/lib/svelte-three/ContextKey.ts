@@ -1,8 +1,7 @@
 class ContextKey {
-    static SCENE: string = "m_scene";
-    static RENDER: string = "m_renderer";
-    static CAM: string = "w_setCam";
-    static SET_SCENE: string = "gs_setScene";
+    static SCENE: string = "s_scene";
+    static RENDER: string = "s_renderer";
+    static CAM: string = "s_setCam";
     static UPDATE: string = "h_update";
     static COMP_FUNC: string = "i_ComponentFunction";
 }
