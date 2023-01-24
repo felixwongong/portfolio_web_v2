@@ -2,8 +2,9 @@
     import {PerspectiveCamera} from "three";
     import {getContext} from "svelte";
     import {ContextKey} from "./ContextKey";
+    import type {Writable} from "svelte/store";
 
-    const SetCamera = getContext(ContextKey.SET_CAM);
+    const cameraStore:Writable<PerspectiveCamera> = getContext(ContextKey.CAM);
     const fov = 75;
     const aspect = 2;  // the canvas default
     const near = 0.1;
@@ -13,5 +14,5 @@
     camera.position.z = 2.5;
     camera.position.y = 0.5;
 
-    SetCamera(camera);
+    cameraStore.set(camera);
 </script>

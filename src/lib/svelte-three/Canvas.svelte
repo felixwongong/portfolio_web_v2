@@ -2,6 +2,8 @@
     import {AmbientLight, PerspectiveCamera, Scene, WebGLRenderer} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
+    import {writable} from "svelte/store";
+    import type {Writable} from "svelte/store";
 
     type OnUpdate = () => Promise<void>;
 
@@ -11,11 +13,11 @@
     let threeCanvas: HTMLCanvasElement;
     let renderer: WebGLRenderer;
 
-    let camera: PerspectiveCamera;
+    let camera = writable<PerspectiveCamera>();
     let mainScene: Scene;
     let updateActions: OnUpdate[] = [];
 
-    setContext(ContextKey.SET_CAM, (c: PerspectiveCamera) => camera = c);
+    setContext(ContextKey.CAM, camera);
     setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
     setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
 
@@ -23,7 +25,7 @@
     let curTime: number = 0;
 
     async function Update(time: number) {
-        renderer.render(mainScene, camera);
+        renderer.render(mainScene, $camera);
 
         for(let i = 0; i < updateActions.length; i++) {
             await updateActions[i]();
@@ -51,8 +53,8 @@
         const needResize = renderer.domElement.width !== width || renderer.domElement.height !== height;
 
         if (needResize) {
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
+            $camera.aspect = width / height;
+            $camera.updateProjectionMatrix();
 
             renderer.setSize(width, height);
         }
