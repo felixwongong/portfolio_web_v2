@@ -3,7 +3,6 @@
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {writable} from "svelte/store";
-    import type {Writable} from "svelte/store";
 
     type OnUpdate = () => Promise<void>;
 
@@ -11,13 +10,14 @@
 
     let container: HTMLElement;
     let threeCanvas: HTMLCanvasElement;
-    let renderer: WebGLRenderer;
+    let renderer: writable<WebGLRenderer> = writable();
 
     let camera = writable<PerspectiveCamera>();
     let mainScene: Scene;
     let updateActions: OnUpdate[] = [];
 
     setContext(ContextKey.CAM, camera);
+    setContext(ContextKey.RENDER, renderer);
     setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
     setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
 
@@ -25,7 +25,7 @@
     let curTime: number = 0;
 
     async function Update(time: number) {
-        renderer.render(mainScene, $camera);
+        $renderer.render(mainScene, $camera);
 
         for(let i = 0; i < updateActions.length; i++) {
             await updateActions[i]();
@@ -42,7 +42,7 @@
     }
 
     function CanvasResize() {
-        renderer = new WebGLRenderer({
+        $renderer = new WebGLRenderer({
             canvas: threeCanvas,
             precision: "highp",
             alpha: true,
@@ -50,13 +50,13 @@
         });
 
         const {width, height} = container.getBoundingClientRect();
-        const needResize = renderer.domElement.width !== width || renderer.domElement.height !== height;
+        const needResize = $renderer.domElement.width !== width || $renderer.domElement.height !== height;
 
         if (needResize) {
             $camera.aspect = width / height;
             $camera.updateProjectionMatrix();
 
-            renderer.setSize(width, height);
+            $renderer.setSize(width, height);
         }
     }
 

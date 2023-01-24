@@ -7,7 +7,7 @@
     import Rotator from "$lib/svelte-three-custom/Rotator.svelte";
 
     import chair from "$lib/assets/model/chair.glb";
-
+    import OrbitControl from "../lib/svelte-three/OrbitControl.svelte";
 </script>
 
 <section class="h-screen w-full">
@@ -21,5 +21,6 @@
             </GameObject>
         </Scene>
         <Perspective />
+        <OrbitControl/>
     </Canvas>
 </section>
