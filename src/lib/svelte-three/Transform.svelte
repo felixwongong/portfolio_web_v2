@@ -2,8 +2,8 @@
     import {getContext, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {TransformComp} from "./ComponentClass/Locator";
-    const  AddComponent = getContext(ContextKey.ADD_COMP);
-    const  GetComponent = getContext(ContextKey.GET_COMP);
+    import type {ComponentFunc} from "./ComponentClass/Component";
+    const  {AddComponent, GetComponent}: ComponentFunc = getContext(ContextKey.COMP_FUNC);
     const  Update = getContext(ContextKey.UPDATE);
 
     AddComponent(new TransformComp());

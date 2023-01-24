@@ -3,8 +3,7 @@ class ContextKey {
     static SET_CAM: string = "gs_setCam";
     static SET_SCENE: string = "gs_setScene";
     static UPDATE: string = "h_update";
-    static ADD_COMP: string = "i_addComponent";
-    static GET_COMP: string = "i_getComponent";
+    static COMP_FUNC: string = "i_ComponentFunction";
 }
 
 export {ContextKey};

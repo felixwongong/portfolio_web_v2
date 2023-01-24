@@ -5,8 +5,7 @@
     import {MeshComp} from "./ComponentClass/Locator";
     import TransformComp from "./ComponentClass/TransformComp";
 
-    const AddComponent = getContext(ContextKey.ADD_COMP);
-    const GetComponent = getContext(ContextKey.GET_COMP);
+    const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
     const scene: Scene = getContext(ContextKey.SCENE);
     const Update = getContext(ContextKey.UPDATE);
 
