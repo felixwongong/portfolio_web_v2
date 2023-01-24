@@ -1,16 +1,20 @@
 <script lang="ts">
-import Transform from "./Transform.svelte";
-import {onMount, setContext} from "svelte";
-import type {Component} from "./ComponentType";
+    import {getContext, onMount, setContext} from "svelte";
+import type {Component} from "./ComponentClass/ComponentType";
 import {ContextKey} from "./ContextKey.ts";
+import Transform from "./Transform.svelte";
+import MeshComp from "./ComponentClass/MeshComp";
 
-let components: Component[] = [];
+export let components: Component[] = [];
 
 setContext(ContextKey.ADD_COMP, (comp: Component) => components.push(comp))
+setContext(ContextKey.GET_COMP, GetComponent)
 
-onMount(() => {
-    components.forEach((c) => console.info(c))
-})
+function GetComponent<T extends Component>(typeName: string): T{
+    for (const component of components) {
+        if(typeName == component.constructor.name) return component as T;
+    }
+}
 </script>
 
 <slot></slot>

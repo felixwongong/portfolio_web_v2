@@ -2,29 +2,23 @@
     import {getContext} from "svelte";
     import {BoxGeometry, Euler, Material, Mesh, MeshBasicMaterial, Scene} from "three";
     import {ContextKey} from "./ContextKey";
-    import type {Component} from "./ComponentType";
+    import type {Component} from "./ComponentClass/ComponentType";
+    import MeshComp from "./ComponentClass/MeshComp";
 
     const AddComponent = getContext(ContextKey.ADD_COMP);
     const scene: Scene = getContext(ContextKey.SCENE);
     const Update = getContext(ContextKey.UPDATE);
 
-    interface MeshComp extends Component{
-        material: MeshBasicMaterial;
-        geometry: BoxGeometry;
-        mesh: Mesh;
-    }
-
-    export let rotation: Euler = new Euler();
-
     const boxWidth = 1;
     const boxHeight = 1;
     const boxDepth = 1;
 
-    let m_mesh: MeshComp = {
-        material: new MeshBasicMaterial({color: 0x44aa88}),
-        geometry: new BoxGeometry(boxWidth, boxHeight, boxDepth),
-        mesh: null,
-    };
+    let rotation: Euler = new Euler();
+
+    let m_mesh: MeshComp = new MeshComp(
+        new MeshBasicMaterial({color: 0x44aa88}),
+        new BoxGeometry(boxWidth, boxHeight, boxDepth)
+    )
     m_mesh.mesh = new Mesh(m_mesh.geometry, m_mesh.material);
 
     Update(() => {
