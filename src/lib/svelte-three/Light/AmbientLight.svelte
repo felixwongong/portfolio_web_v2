@@ -1,7 +1,8 @@
 <script lang="ts">
     import {getContext} from "svelte";
     import {ContextKey} from "../ContextKey";
-    import {AmbientLight, ColorRepresentation, Scene} from "three";
+    import {AmbientLight, Scene} from "three";
+    import type {ColorRepresentation} from "three";
     import type {Writable} from "svelte/store";
 
     const scene = getContext<Writable<Scene>>(ContextKey.SCENE);

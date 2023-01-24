@@ -67,8 +67,6 @@
         resizeObserver.observe(container);
         CanvasResize();
 
-        const light = new AmbientLight( 0x404040, 6 ); // soft white light
-        $mainScene.add(light)
         requestAnimationFrame(Update);
     })
 

@@ -2,7 +2,6 @@
     import {onMount, setContext} from "svelte";
     import type {Component, ComponentFunc} from "./ComponentClass/Component";
     import {ContextKey} from "./ContextKey.ts";
-    import Transform from "./Transform.svelte";
 
     export let components: Component[] = [];
 
@@ -21,16 +20,6 @@
         }
     }
 
-    onMount(() => {
-        console.log('======================')
-        components.forEach(c => console.log(c))
-    })
 </script>
 
-<slot></slot>
-
-<Transform>
-    <slot name="children"/>
-</Transform>
-
-<slot name="components"/>
+<slot />
