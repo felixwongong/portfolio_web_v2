@@ -1,9 +1,9 @@
 <script lang="ts">
-    import * as THREE from "three";
-    import Perspective from "./Perspective.svelte";
-    import {PerspectiveCamera, WebGLRenderer} from "three";
-    import Scene from "./Scene.svelte";
-    import {onDestroy, onMount} from "svelte";
+    import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
+    import {onDestroy, onMount, setContext} from "svelte";
+    import {ContextKey} from "./ContextKey";
+
+    type OnUpdate = () => Promise<void>;
 
     let resizeObserver: ResizeObserver;
 
@@ -12,10 +12,20 @@
     let renderer: WebGLRenderer;
 
     let camera: PerspectiveCamera;
-    let mainScene: THREE.Scene;
+    let mainScene: Scene;
+    let updateActions: OnUpdate[] = [];
 
-    function Update(time: number) {
+    setContext(ContextKey.SET_CAM, (c: PerspectiveCamera) => camera = c);
+    setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
+    setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
+
+
+    async function Update(time: number) {
         renderer.render(mainScene, camera);
+
+        for(let i = 0; i < updateActions.length; i++) {
+            await updateActions[i]();
+        }
 
         requestAnimationFrame(Update);
     }
@@ -66,9 +76,8 @@
   </SavingsCard>
   ```
  -->
-<div id="container" class="{$$props.class}" bind:this={container}>
+<div bind:this={container} class="{$$props.class}" id="container">
     <canvas bind:this={threeCanvas} class="w-full h-full">
-        <Scene bind:scene={mainScene}></Scene>
-        <Perspective bind:camera={camera}/>
+        <slot/>
     </canvas>
 </div>
