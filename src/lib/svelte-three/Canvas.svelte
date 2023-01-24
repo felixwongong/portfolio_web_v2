@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
+    import {AmbientLight, PerspectiveCamera, Scene, WebGLRenderer} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
 
@@ -19,12 +19,21 @@
     setContext(ContextKey.SET_SCENE, (s: Scene) => mainScene = s);
     setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
 
+    let frameCount: number = 0;
+    let curTime: number = 0;
 
     async function Update(time: number) {
         renderer.render(mainScene, camera);
 
         for(let i = 0; i < updateActions.length; i++) {
             await updateActions[i]();
+        }
+
+        if(time - curTime > 1000) {
+            curTime = time;
+            frameCount = 0;
+        } else {
+            frameCount++;
         }
 
         requestAnimationFrame(Update);
@@ -55,6 +64,9 @@
         })
         resizeObserver.observe(container);
         CanvasResize();
+
+        const light = new AmbientLight( 0x404040, 6 ); // soft white light
+        mainScene.add(light)
         requestAnimationFrame(Update);
     })
 

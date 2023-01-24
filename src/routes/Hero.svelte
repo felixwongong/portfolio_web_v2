@@ -8,15 +8,15 @@
 
     import chair from "$lib/assets/model/chair.glb";
 
-    let pixelRatio = 0.75;
-    let spin = 0;
 </script>
 
 <section class="h-screen w-full">
     <Canvas class="w-screen h-screen">
         <Scene>
             <GameObject>
-                <Mesh slot="components" src={chair}></Mesh>
+                <svelte:fragment slot="components">
+                    <Mesh src={chair}></Mesh>
+                </svelte:fragment>
                 <Rotator />
             </GameObject>
         </Scene>
