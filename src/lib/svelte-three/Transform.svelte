@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {getContext, onMount} from "svelte";
+    import {getContext, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {TransformComp} from "./ComponentClass/Locator";
     const  AddComponent = getContext(ContextKey.ADD_COMP);
@@ -15,7 +15,7 @@
     })
 
     Update(() => {
-        console.log(m_transform.rotation.x)
+        //console.log(m_transform.rotation.x)
     })
 </script>
 

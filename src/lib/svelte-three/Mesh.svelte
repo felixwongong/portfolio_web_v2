@@ -3,8 +3,10 @@
     import {BoxGeometry, Euler, Material, Mesh, MeshBasicMaterial, Scene} from "three";
     import {ContextKey} from "./ContextKey";
     import {MeshComp} from "./ComponentClass/Locator";
+    import TransformComp from "./ComponentClass/TransformComp";
 
     const AddComponent = getContext(ContextKey.ADD_COMP);
+    const GetComponent = getContext(ContextKey.GET_COMP);
     const scene: Scene = getContext(ContextKey.SCENE);
     const Update = getContext(ContextKey.UPDATE);
 
@@ -12,7 +14,7 @@
     const boxHeight = 1;
     const boxDepth = 1;
 
-    let rotation: Euler = new Euler();
+    let transform: TransformComp = GetComponent(TransformComp.name);
 
     let m_mesh: MeshComp = new MeshComp(
         new MeshBasicMaterial({color: 0x44aa88}),
@@ -21,10 +23,10 @@
     m_mesh.mesh = new Mesh(m_mesh.geometry, m_mesh.material);
 
     Update(() => {
-        if(rotation === m_mesh.mesh.rotation) return;
-        m_mesh.mesh.rotation.x = rotation.x;
-        m_mesh.mesh.rotation.y = rotation.y;
-        m_mesh.mesh.rotation.z = rotation.z;
+        if(transform.rotation === m_mesh.mesh.rotation) return;
+        m_mesh.mesh.rotation.x = transform.rotation.x;
+        m_mesh.mesh.rotation.y = transform.rotation.y;
+        m_mesh.mesh.rotation.z = transform.rotation.z;
     })
 
     AddComponent(m_mesh)

@@ -14,5 +14,6 @@
 
     Update(() => {
         transform.rotation.x += 0.01;
+        transform.rotation.z += 0.01;
     })
 </script>
