@@ -1,5 +1,10 @@
 import {writable} from "svelte/store";
 
-const isInEdit = writable<boolean>(false);
+class EMode {
+    static VIEW = "View"
+    static OBJECT = "Object"
+}
 
-export {isInEdit};
+const Mode = writable<string>(EMode.VIEW);
+
+export {EMode, Mode};

@@ -3,7 +3,7 @@
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {writable} from "svelte/store";
-    import type {EventFunc, Hook} from "./Hooks";
+    import type {EventFunc, AsyncHook} from "./Hooks";
 
 
     let resizeObserver: ResizeObserver;
@@ -14,12 +14,12 @@
 
     let camera = writable<PerspectiveCamera>();
     let mainScene = writable<Scene>();
-    let updateActions: Hook[] = [];
-    let startAction: Hook[] = [];
+    let updateActions: AsyncHook[] = [];
+    let startAction: AsyncHook[] = [];
 
     const eventFunc: EventFunc = {
-        Update: (action:Hook) => updateActions.push(action),
-        Start:(action:Hook) => startAction.push(action),
+        Update: (action:AsyncHook) => updateActions.push(action),
+        Start:(action:AsyncHook) => startAction.push(action),
     }
 
     setContext(ContextKey.CAM_STORE, camera);

@@ -12,17 +12,11 @@
     import TransformControl from "../lib/svelte-three/Control/TransformControl.svelte";
     import chair from "$lib/assets/model/chair.glb"
     import Mesh from "$lib/svelte-three/Mesh.svelte";
+    import Setting from "$lib/svelte-three/Setting/Setting.svelte";
 </script>
 
 <section class="h-screen w-full">
-    <span class="absolute" style="top: 10%; left: 10%">
-        <select class="indicator-top indicator-center select select-bordered select-sm w-full max-w-xs">
-            <option>View</option>
-            <option>Object</option>
-        </select>
-    </span>
-
-
+    <Setting />
 
     <Canvas class="w-full h-screen">
         <Scene>
