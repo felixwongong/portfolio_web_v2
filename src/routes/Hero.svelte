@@ -15,7 +15,7 @@
 </script>
 
 <section class="h-screen w-full">
-    <Canvas class="w-screen h-screen">
+    <Canvas class="w-full h-screen">
         <Scene>
             <GameObject>
                 <Transform/>
@@ -31,5 +31,20 @@
         </Scene>
 
         <OrbitControl />
+    </Canvas>
+
+    <Canvas class="w-full h-screen">
+        <Scene>
+            <GameObject>
+                <Transform/>
+                <Mesh src={chair}></Mesh>
+            </GameObject>
+            <GameObject>
+                <Transform position={Object3D.DefaultUp}/>
+                <DirectionalLight />
+            </GameObject>
+            <Perspective />
+            <AmbientLight />
+        </Scene>
     </Canvas>
 </section>

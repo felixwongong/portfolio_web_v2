@@ -2,7 +2,7 @@
     import Navbar from "./Navbar.svelte";
 </script>
 
-<div class="font-comic bg-gradient-to-r from-yellow-200 to-orange-400 min-h-screen">
+<div class="font-comic bg-gradient-to-r from-yellow-200 to-orange-400 min-h-screen box-border">
     <Navbar />
     <slot/>
 </div>
