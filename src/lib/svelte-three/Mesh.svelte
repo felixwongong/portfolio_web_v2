@@ -4,7 +4,7 @@
     import {ContextKey} from "./ContextKey";
     import TransformComp from "./ComponentClass/TransformComp";
 
-    import {GLTFLoader} from "$lib/three/GLTFLoader";
+    import {GLTFLoader} from "./three/GLTFLoader";
     import type {Writable} from "svelte/store";
     import {MeshComp} from "./ComponentClass/Locator";
     const loader = new GLTFLoader();

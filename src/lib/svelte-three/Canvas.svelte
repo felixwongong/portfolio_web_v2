@@ -89,8 +89,6 @@
   ```
  -->
 <div bind:this={container} class="{$$props.class}" id="container">
-
-
     <canvas bind:this={threeCanvas} class="w-full h-full">
         <slot/>
     </canvas>

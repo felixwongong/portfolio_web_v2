@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-    import {getContext, onMount} from "svelte";
-    import {ContextKey} from "./ContextKey";
+    import {OrbitControls} from "../three/OrbitControls";
+    import {getContext} from "svelte";
+    import {ContextKey} from "../ContextKey";
     import type {Writable} from "svelte/store";
     import {PerspectiveCamera} from "three";
     import type {Renderer} from "three";
