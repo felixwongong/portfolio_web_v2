@@ -7,11 +7,13 @@
     import {GLTFLoader} from "./three/GLTFLoader";
     import type {Writable} from "svelte/store";
     import {MeshComp} from "./ComponentClass/Locator";
+    import type {EventFunc} from "./Hooks";
     const loader = new GLTFLoader();
 
     const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
-    const scene = getContext<Writable<Scene>>(ContextKey.SCENE);
-    const Update = getContext(ContextKey.UPDATE);
+    const scene = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
+    const {Update} = getContext<EventFunc>(ContextKey.HOOK);
+
 
     export let src:string;
 

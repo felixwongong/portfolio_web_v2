@@ -1,10 +1,10 @@
 <script lang="ts">
-    import {AmbientLight, PerspectiveCamera, Scene, WebGLRenderer} from "three";
+    import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {writable} from "svelte/store";
+    import type {EventFunc, Hook} from "./Hooks";
 
-    type OnUpdate = () => Promise<void>;
 
     let resizeObserver: ResizeObserver;
 
@@ -14,12 +14,18 @@
 
     let camera = writable<PerspectiveCamera>();
     let mainScene = writable<Scene>();
-    let updateActions: OnUpdate[] = [];
+    let updateActions: Hook[] = [];
 
-    setContext(ContextKey.CAM, camera);
-    setContext(ContextKey.RENDER, renderer);
-    setContext(ContextKey.SCENE, mainScene);
-    setContext(ContextKey.UPDATE, (action: OnUpdate) => updateActions.push(action))
+    const eventFunc: EventFunc = {
+        Update: (action:Hook) => updateActions.push(action)
+    }
+
+    setContext(ContextKey.CAM_STORE, camera);
+    setContext(ContextKey.RENDER_STORE, renderer);
+    setContext(ContextKey.SCENE_STORE, mainScene);
+    setContext(ContextKey.HOOK, eventFunc)
+
+
 
     let frameCount: number = 0;
     let curTime: number = 0;
@@ -48,6 +54,7 @@
             alpha: true,
             antialias: true,
         });
+        console.log($renderer)
 
         const {width, height} = container.getBoundingClientRect();
         const needResize = $renderer.domElement.width !== width || $renderer.domElement.height !== height;
@@ -61,11 +68,11 @@
     }
 
     onMount(() => {
+        CanvasResize();
         resizeObserver = new ResizeObserver(_ => {
             CanvasResize();
         })
         resizeObserver.observe(container);
-        CanvasResize();
 
         requestAnimationFrame(Update);
     })

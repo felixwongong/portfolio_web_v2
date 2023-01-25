@@ -4,7 +4,7 @@
     import {ContextKey} from "./ContextKey";
     import type {Writable} from "svelte/store";
 
-    const cameraStore:Writable<PerspectiveCamera> = getContext(ContextKey.CAM);
+    const cameraStore:Writable<PerspectiveCamera> = getContext(ContextKey.CAM_STORE);
     const fov = 75;
     const aspect = 2;  // the canvas default
     const near = 0.1;

@@ -5,7 +5,7 @@
     import type {ColorRepresentation} from "three";
     import type {Writable} from "svelte/store";
 
-    const scene = getContext<Writable<Scene>>(ContextKey.SCENE);
+    const scene = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
 
     export let color: ColorRepresentation = 0x404040;
     export let intensity: number = 6;

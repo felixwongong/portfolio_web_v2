@@ -2,15 +2,16 @@
     import Canvas from "$lib/svelte-three/Canvas.svelte";
     import Perspective from "$lib/svelte-three/Perspective.svelte";
     import Scene from "$lib/svelte-three/Scene.svelte";
-    import Mesh from "$lib/svelte-three/Mesh.svelte";
     import GameObject from "$lib/svelte-three/GameObject.svelte";
 
-    import chair from "$lib/assets/model/chair.glb";
     import OrbitControl from "$lib/svelte-three/Control/OrbitControl.svelte";
     import Transform from "$lib/svelte-three/Transform.svelte";
     import AmbientLight from "$lib/svelte-three/Light/AmbientLight.svelte";
     import DirectionalLight from "../lib/svelte-three/Light/DirectionalLight.svelte";
     import {Object3D} from "three";
+    import TransformControl from "../lib/svelte-three/Control/TransformControl.svelte";
+    import chair from "$lib/assets/model/chair.glb"
+    import Mesh from "$lib/svelte-three/Mesh.svelte";
 </script>
 
 <section class="h-screen w-full">
@@ -28,5 +29,6 @@
             <AmbientLight />
         </Scene>
         <OrbitControl />
+        <TransformControl />
     </Canvas>
 </section>

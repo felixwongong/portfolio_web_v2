@@ -7,7 +7,7 @@
     export let scene: Scene;
 
     scene = new Scene();
-    const sceneStore = getContext<Writable<Scene>>(ContextKey.SCENE);
+    const sceneStore = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
     sceneStore.set(scene);
 
 </script>

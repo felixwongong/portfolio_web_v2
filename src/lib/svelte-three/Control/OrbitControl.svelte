@@ -5,10 +5,11 @@
     import type {Writable} from "svelte/store";
     import {PerspectiveCamera} from "three";
     import type {Renderer} from "three";
+    import type {EventFunc} from "../Hooks";
 
-    const camera: Writable<PerspectiveCamera> = getContext(ContextKey.CAM);
-    const Update = getContext(ContextKey.UPDATE);
-    const renderer: Writable<Renderer> = getContext(ContextKey.RENDER);
+    const camera: Writable<PerspectiveCamera> = getContext(ContextKey.CAM_STORE);
+    const {Update} = getContext<EventFunc>(ContextKey.HOOK);
+    const renderer: Writable<Renderer> = getContext(ContextKey.RENDER_STORE);
 
     let control:OrbitControls;
 

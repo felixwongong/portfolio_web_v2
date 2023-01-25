@@ -6,10 +6,11 @@
     import type {Writable} from "svelte/store";
     import TransformComp from "../ComponentClass/TransformComp";
     import type {ComponentFunc} from "../ComponentClass/Component";
+    import type {EventFunc} from "../Hooks";
 
-    const scene = getContext<Writable<Scene>>(ContextKey.SCENE);
+    const scene = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
     const {GetComponent} = getContext<ComponentFunc>(ContextKey.COMP_FUNC);
-    const Update = getContext(ContextKey.UPDATE);
+    const {Update} = getContext<EventFunc>(ContextKey.HOOK);
 
     let transform: TransformComp = GetComponent(TransformComp.name);
 
