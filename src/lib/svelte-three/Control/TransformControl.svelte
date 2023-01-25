@@ -50,6 +50,10 @@
     }
 
     function OnChangeMode(event: KeyboardEvent) {
+        if(event.code == "Escape") {
+            Mode.set(EMode.VIEW);
+            return;
+        }
         let mode = KeyMapMode[event.code];
         if(mode) {
             control.setMode(mode);
@@ -77,8 +81,10 @@
             const isObject = value === EMode.OBJECT;
             if(!isObject) {
                 $renderer.domElement.removeEventListener("mousedown", SelectObject)
+                window.removeEventListener('keydown', OnChangeMode)
             } else {
                 $renderer.domElement.addEventListener("mousedown", SelectObject)
+                window.addEventListener('keydown', OnChangeMode)
                 SelectRandomObject();
             }
             control.enabled = isObject;
@@ -86,6 +92,5 @@
         })
 
         $renderer.domElement.addEventListener("dblclick", OnDbClick)
-        window.addEventListener('keydown', OnChangeMode)
     })
 </script>
