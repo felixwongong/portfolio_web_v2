@@ -10,6 +10,7 @@
     import type{Renderer} from "three";
     import type {Writable} from "svelte/store";
     import type {EventFunc} from "../Hooks";
+    import KeyMapMode from "./KeyMapMode";
 
     const cam = getContext<Writable<Camera>>(ContextKey.CAM_STORE);
     const renderer = getContext<Writable<Renderer>>(ContextKey.RENDER_STORE);
@@ -48,6 +49,13 @@
         }
     }
 
+    function OnChangeMode(event: KeyboardEvent) {
+        let mode = KeyMapMode[event.code];
+        if(mode) {
+            control.setMode(mode);
+        }
+    }
+
     function SelectRandomObject() {
         if(lastHitObject == null) lastHitObject = $scene.children.find((obj) => obj as Mesh);
         if(!control.object) {
@@ -78,7 +86,6 @@
         })
 
         $renderer.domElement.addEventListener("dblclick", OnDbClick)
+        window.addEventListener('keydown', OnChangeMode)
     })
-
-
 </script>
