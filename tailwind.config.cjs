@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,svelte}"],
+  content: [
+      "./src/**/*.{html,js,svelte}",
+      "./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}",
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -18,5 +21,5 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

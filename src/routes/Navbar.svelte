@@ -4,6 +4,7 @@
     import {isNightMode} from "$lib/store/nightMode";
     import {onMount} from "svelte";
     import {get} from "svelte/store";
+    import {Alert} from "flowbite-svelte";
 
     const navHeight: String = "h-16"
 
@@ -25,10 +26,10 @@
     });
 </script>
 <div>
-    <div class="fixed top-0 left-0 w-screen {navHeight} z-50 bg-white border-b-2 border-black">
+    <div class="fixed top-0 left-0 w-screen {navHeight} z-50 bg-white border-b-2 border-black text-base-300">
         <nav class="max-w-screen-md h-full mx-auto flex flex-row align-middle justify-between">
             <a href="/"
-               class="text-primary-dark font-bold text-lg antialiased flex flex-row items-center dark:bg-darkSecondary px-2 rounded-md">
+               class=" font-bold text-lg antialiased flex flex-row items-center dark:bg-darkSecondary px-2 rounded-md">
                 <h2>Felix Wong</h2>
             </a>
             <ul class="flex flex-row justify-evenly items-center">
