@@ -35,7 +35,7 @@
     Start(() => {
         loader.load(src, function (fbx) {
             m_mesh.mesh = fbx.scene;
-            $scene.add(m_mesh.mesh);
+            $scene.add(...m_mesh.mesh.children);
         }, undefined, function (err) {
             console.log(err)
         })

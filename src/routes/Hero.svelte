@@ -11,7 +11,7 @@
     import {Object3D} from "three";
     import TransformControl from "../lib/svelte-three/Control/TransformControl.svelte";
     import chair from "$lib/assets/model/chair.glb"
-    import Mesh from "$lib/svelte-three/Mesh.svelte";
+    import StaticMesh from "$lib/svelte-three/StaticMesh.svelte";
     import Setting from "$lib/svelte-three/Setting/Setting.svelte";
 </script>
 
@@ -22,7 +22,7 @@
         <Scene>
             <GameObject>
                 <Transform/>
-                <Mesh src={chair}></Mesh>
+                <StaticMesh src={chair}></StaticMesh>
             </GameObject>
             <GameObject>
                 <Transform position={Object3D.DefaultUp}/>
