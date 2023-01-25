@@ -15,6 +15,15 @@
 </script>
 
 <section class="h-screen w-full">
+    <span class="absolute" style="top: 10%; left: 10%">
+        <select class="indicator-top indicator-center select select-bordered select-sm w-full max-w-xs">
+            <option>View</option>
+            <option>Object</option>
+        </select>
+    </span>
+
+
+
     <Canvas class="w-full h-screen">
         <Scene>
             <GameObject>
@@ -31,4 +40,6 @@
         <OrbitControl />
         <TransformControl />
     </Canvas>
+
+
 </section>
