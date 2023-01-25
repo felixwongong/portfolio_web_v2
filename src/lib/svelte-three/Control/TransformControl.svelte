@@ -2,7 +2,7 @@
     import {TransformControls} from "../three/TransformControls.js";
     import {getContext, onMount} from "svelte";
     import {ContextKey} from "../ContextKey";
-    import {BoxGeometry, Camera, Mesh, MeshNormalMaterial, Raycaster, Scene, Vector2} from "three";
+    import {BoxGeometry, Camera, Mesh, MeshNormalMaterial, Object3D, Raycaster, Scene, Vector2} from "three";
     import { EMode, Mode } from "../Setting/Setting.ts";
     import RaycastUtil from "../Utilities/Raycast.ts";
 
@@ -19,6 +19,8 @@
     let control: TransformControls;
     let rc = new RaycastUtil();
 
+    let lastHitObject: Object3D;
+
     function SelectObject(event: MouseEvent) {
         event.preventDefault();
 
@@ -28,18 +30,28 @@
         const clickPos = new Vector2(event.offsetX, event.offsetY);
         const hits = rc.Raycast($cam, $renderer, clickPos, $scene)
         if(hits.length > 0) {
-            control.attach(hits[0].object)
+            const obj = hits[0].object;
+            control.attach(obj)
+            lastHitObject = obj;
         }
     }
 
-    function onDbClick(event: MouseEvent) {
+    function OnDbClick(event: MouseEvent) {
         event.preventDefault();
+        $renderer.domElement.addEventListener("mousedown", SelectObject)
 
         const clickPos = new Vector2(event.offsetX, event.offsetY);
         const hits = rc.Raycast($cam, $renderer, clickPos, $scene)
         if(hits.length > 0) {
             Mode.set(EMode.OBJECT);
             SelectObject(event);
+        }
+    }
+
+    function SelectRandomObject() {
+        if(lastHitObject == null) lastHitObject = $scene.children.find((obj) => obj as Mesh);
+        if(!control.object) {
+            control.attach(lastHitObject);
         }
     }
 
@@ -51,17 +63,21 @@
         cube.position.set(1, 0, 0);
         $scene.add(cube)
 
-        control.attach(cube);
         $scene.add(control);
 
         Mode.subscribe((value) => {
             const isObject = value === EMode.OBJECT;
+            if(!isObject) {
+                $renderer.domElement.removeEventListener("mousedown", SelectObject)
+            } else {
+                $renderer.domElement.addEventListener("mousedown", SelectObject)
+                SelectRandomObject();
+            }
             control.enabled = isObject;
             control.showX = control.showY = control.showZ = isObject;
         })
 
-        $renderer.domElement.addEventListener("mousedown", SelectObject)
-        $renderer.domElement.addEventListener("dblclick", onDbClick)
+        $renderer.domElement.addEventListener("dblclick", OnDbClick)
     })
 
 
