@@ -14,8 +14,6 @@
 
     let control:OrbitControls;
 
-
-
     Start(() => {
         control = new OrbitControls($camera, $renderer.domElement);
 
