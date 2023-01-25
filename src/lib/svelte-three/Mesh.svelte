@@ -12,7 +12,7 @@
 
     const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
     const scene = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
-    const {Update} = getContext<EventFunc>(ContextKey.HOOK);
+    const {Start ,Update} = getContext<EventFunc>(ContextKey.HOOK);
 
 
     export let src:string;
@@ -32,7 +32,7 @@
     AddComponent(m_mesh)
 
 
-    onMount(() => {
+    Start(() => {
         loader.load(src, function (fbx) {
             m_mesh.mesh = fbx.scene;
             $scene.add(m_mesh.mesh);

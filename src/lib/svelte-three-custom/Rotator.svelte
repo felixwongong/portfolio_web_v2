@@ -5,7 +5,7 @@
     import type {ComponentFunc} from "../svelte-three/ComponentClass/Component";
 
     const {GetComponent}:ComponentFunc = getContext(ContextKey.COMP_FUNC);
-    const Update = getContext(ContextKey.UPDATE);
+    const {Update} = getContext(ContextKey.HOOK);
 
     let transform: TransformComp;
 

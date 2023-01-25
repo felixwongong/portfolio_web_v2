@@ -15,9 +15,11 @@
     let camera = writable<PerspectiveCamera>();
     let mainScene = writable<Scene>();
     let updateActions: Hook[] = [];
+    let startAction: Hook[] = [];
 
     const eventFunc: EventFunc = {
-        Update: (action:Hook) => updateActions.push(action)
+        Update: (action:Hook) => updateActions.push(action),
+        Start:(action:Hook) => startAction.push(action),
     }
 
     setContext(ContextKey.CAM_STORE, camera);
@@ -29,6 +31,13 @@
 
     let frameCount: number = 0;
     let curTime: number = 0;
+
+
+    async function Start() {
+        for(let i = 0; i < startAction.length; i++) {
+            await startAction[i]();
+        }
+    }
 
     async function Update(time: number) {
         $renderer.render($mainScene, $camera);
@@ -54,7 +63,6 @@
             alpha: true,
             antialias: true,
         });
-        console.log($renderer)
 
         const {width, height} = container.getBoundingClientRect();
         const needResize = $renderer.domElement.width !== width || $renderer.domElement.height !== height;
@@ -67,8 +75,11 @@
         }
     }
 
-    onMount(() => {
+    onMount(async () => {
         CanvasResize();
+
+        await Start();
+
         resizeObserver = new ResizeObserver(_ => {
             CanvasResize();
         })
