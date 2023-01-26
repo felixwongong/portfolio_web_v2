@@ -3,15 +3,17 @@
 
     import coffee from "$lib/assets/model/coffee.glb"
     import {AmbientLight, DirectionalLight} from "../svelte-three/Light";
-    import {Object3D, Vector3} from "three";
+    import {Euler, Object3D, Vector3} from "three";
+    import Rotator from "../svelte-three-custom/Rotator.svelte";
+
 
     let isFullScreen = false;
 </script>
 
 <section
-        class="{isFullScreen ? 'max-w-screen': 'max-w-screen-md' } h-screen mx-auto py-10 flex justify-between prose">
-    <div class="flex flex-col justify-start flex-wrap">
-        <h2 class="block" contenteditable>Game dev & Web dev newbie</h2>
+        class="{isFullScreen ? 'max-w-screen': 'max-w-screen-md' } h-screen mx-auto py-10 flex justify-between">
+    <div class="flex flex-col justify-start flex-wrap prose">
+        <h2 class="block" contenteditable>A Game Developer, and Web Developer</h2>
         <p class="block" contenteditable>...and a non-stop learner</p>
         <button class="btn">My Work</button>
     </div>
@@ -28,19 +30,17 @@
                         <DirectionalLight />
                     </GameObject>
                     <GameObject>
-                        <Transform position={new Vector3(0, 0.5, 2.5)}/>
-                        <Perspective />
+                        <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)} />
                     </GameObject>
                     <AmbientLight />
                 </Scene>
             </Canvas>
         </div>
         <div class="card-body">
-            <h2 class="card-title">New movie is released!</h2>
-            <p>Click the button to watch on Jetflix app.</p>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Watch</button>
-            </div>
+            <h2 class="card-title">WONG YUEN LAM</h2>
+            <h4> (Felix)</h4>
+            <p>Holiday coder</p>
+            <h6>Coffee addict</h6>
         </div>
     </div>
 </section>

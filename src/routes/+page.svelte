@@ -6,9 +6,10 @@ import Playground from "$lib/props/Playground.svelte";
 </script>
 
 <Hero />
+<div class="divider lg:divider-horizontal"></div>
+<Playground />
+
 <EmoBar class="absolute bottom-0 right-1/4 left-1/2"/>
 <Message />
-
-<Playground />
 
 
