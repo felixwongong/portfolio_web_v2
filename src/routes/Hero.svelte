@@ -8,7 +8,7 @@
     import Transform from "$lib/svelte-three/Transform.svelte";
     import AmbientLight from "$lib/svelte-three/Light/AmbientLight.svelte";
     import DirectionalLight from "../lib/svelte-three/Light/DirectionalLight.svelte";
-    import {Object3D} from "three";
+    import {Object3D, Vector2, Vector3} from "three";
     import TransformControl from "../lib/svelte-three/Control/TransformControl.svelte";
     import chair from "$lib/assets/model/chair.glb"
     import StaticMesh from "$lib/svelte-three/StaticMesh.svelte";
@@ -28,7 +28,10 @@
                 <Transform position={Object3D.DefaultUp}/>
                 <DirectionalLight />
             </GameObject>
-            <Perspective />
+            <GameObject>
+                <Transform position={0, 0.5, 2.5}/>
+                <Perspective />
+            </GameObject>
             <AmbientLight />
         </Scene>
         <OrbitControl />

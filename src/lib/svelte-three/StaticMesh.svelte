@@ -6,7 +6,7 @@
 
     import {GLTFLoader} from "./three/GLTFLoader";
     import type {Writable} from "svelte/store";
-    import {MeshComp} from "./ComponentClass/Locator";
+    import {MeshComp} from "./ComponentClass";
     import type {EventFunc} from "./Hooks";
     const loader = new GLTFLoader();
 
