@@ -6,7 +6,7 @@
 
     import {GLTFLoader} from "./three/GLTFLoader";
     import type {Writable} from "svelte/store";
-    import {MeshComp} from "./ComponentClass/Locator";
+    import {MeshComp} from "./ComponentClass";
     import type {EventFunc} from "./Hooks";
     const loader = new GLTFLoader();
 
@@ -23,10 +23,11 @@
 
     Update(() => {
         const mesh = m_mesh?.mesh;
-        if(!mesh || transform.rotation === mesh.rotation) return;
-        mesh.rotation.x = transform.rotation.x;
-        mesh.rotation.y = transform.rotation.y;
-        mesh.rotation.z = transform.rotation.z;
+        if(!mesh) return;
+        if(transform.rotation != mesh.rotation) {
+            mesh.rotation.set(...transform.rotation);
+        }
+
     })
 
     AddComponent(m_mesh)
@@ -34,8 +35,13 @@
 
     Start(() => {
         loader.load(src, function (fbx) {
-            m_mesh.mesh = fbx.scene;
-            $scene.add(...m_mesh.mesh.children);
+            const mesh = fbx.scene.children[0];
+            m_mesh.mesh = mesh;
+            $scene.add(mesh);
+
+            if(transform.position != mesh.position) {
+                mesh.position.set(...transform.position);
+            }
         }, undefined, function (err) {
             console.log(err)
         })

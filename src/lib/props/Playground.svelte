@@ -1,6 +1,48 @@
-<section class="w-full h-screen relative">
-    <div class="grid w-32 h-20 rounded bg-primary text-primary-content place-content-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <p>Playground!</p>
-        <p>But not yet implemented😭</p>
+<script>
+    import {Canvas, Scene, GameObject, Transform, StaticMesh, Perspective} from "../svelte-three"
+
+    import coffee from "$lib/assets/model/coffee.glb"
+    import {AmbientLight, DirectionalLight} from "../svelte-three/Light";
+    import {Euler, Object3D, Vector3} from "three";
+    import Rotator from "../svelte-three-custom/Rotator.svelte";
+
+
+    let isFullScreen = false;
+</script>
+
+<section
+        class="{isFullScreen ? 'max-w-screen': 'max-w-screen-md' } h-screen md:mx-auto mx-3 py-10 flex md:justify-between justify-evenly md:flex-row flex-col"
+>
+    <div class="flex flex-col justify-start flex-wrap prose">
+        <h2 class="block" contenteditable>A Game Developer, and Web Developer</h2>
+        <p class="block" contenteditable>...and a non-stop learner</p>
+        <button class="btn">My Work</button>
+    </div>
+    <div class="card glass card-bordered card-side card-compact shadow-xl h-fit w-fit mx-auto">
+        <div class="w-1/3 my-auto">
+            <Canvas>
+                <Scene>
+                    <GameObject>
+                        <Transform/>
+                        <StaticMesh src={coffee}></StaticMesh>
+                        <Rotator/>
+                    </GameObject>
+                    <GameObject>
+                        <Transform position={Object3D.DefaultUp}/>
+                        <DirectionalLight />
+                    </GameObject>
+                    <GameObject>
+                        <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)} />
+                    </GameObject>
+                    <AmbientLight />
+                </Scene>
+            </Canvas>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">WONG YUEN LAM</h2>
+            <h4> (Felix)</h4>
+            <p>Holiday coder</p>
+            <h6>Coffee addict</h6>
+        </div>
     </div>
 </section>

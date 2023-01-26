@@ -1,7 +1,7 @@
 <script lang="ts">
     import {getContext, onMount} from "svelte";
     import {ContextKey} from "./ContextKey";
-    import {TransformComp} from "./ComponentClass/Locator";
+    import {TransformComp} from "./ComponentClass";
     import type {ComponentFunc} from "./ComponentClass/Component";
     import {Euler, Vector3} from "three";
 
@@ -14,10 +14,7 @@
     AddComponent(new TransformComp(position, rotation, scale));
     
     let m_transform: TransformComp;
-
-    onMount(() => {
-       m_transform = GetComponent(TransformComp.name);
-    })
+    m_transform = GetComponent(TransformComp.name);
 </script>
 
 <slot>
