@@ -11,13 +11,14 @@
 </script>
 
 <section
-        class="{isFullScreen ? 'max-w-screen': 'max-w-screen-md' } h-screen mx-auto py-10 flex justify-between">
+        class="{isFullScreen ? 'max-w-screen': 'max-w-screen-md' } h-screen md:mx-auto mx-3 py-10 flex md:justify-between justify-evenly md:flex-row flex-col"
+>
     <div class="flex flex-col justify-start flex-wrap prose">
         <h2 class="block" contenteditable>A Game Developer, and Web Developer</h2>
         <p class="block" contenteditable>...and a non-stop learner</p>
         <button class="btn">My Work</button>
     </div>
-    <div class="card glass card-bordered card-side card-compact shadow-xl h-fit w-fit">
+    <div class="card glass card-bordered card-side card-compact shadow-xl h-fit w-fit mx-auto">
         <div class="w-1/3 my-auto">
             <Canvas>
                 <Scene>
