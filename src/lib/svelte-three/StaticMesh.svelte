@@ -28,9 +28,6 @@
             mesh.rotation.set(...transform.rotation);
         }
 
-        if(transform.position != mesh.position) {
-            mesh.position.set(...transform.position);
-        }
     })
 
     AddComponent(m_mesh)
@@ -41,6 +38,10 @@
             const mesh = fbx.scene.children[0];
             m_mesh.mesh = mesh;
             $scene.add(mesh);
+
+            if(transform.position != mesh.position) {
+                mesh.position.set(...transform.position);
+            }
         }, undefined, function (err) {
             console.log(err)
         })
