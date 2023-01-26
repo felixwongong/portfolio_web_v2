@@ -2,7 +2,7 @@
     import {TransformControls} from "../three/TransformControls.js";
     import {getContext, onMount} from "svelte";
     import {ContextKey} from "../ContextKey";
-    import {BoxGeometry, Camera, Mesh, MeshNormalMaterial, Object3D, Raycaster, Scene, Vector2} from "three";
+    import {Camera, Mesh, Object3D, Scene, Vector2} from "three";
     import { EMode, Mode } from "../Setting/Setting.ts";
     import RaycastUtil from "../Utilities/Raycast.ts";
 
@@ -70,10 +70,6 @@
     Start(() => {
         if(!$cam || !$renderer) return;
         control = new TransformControls($cam, $renderer.domElement);
-
-        const cube = new Mesh(new BoxGeometry(), new MeshNormalMaterial())
-        cube.position.set(1, 0, 0);
-        $scene.add(cube)
 
         $scene.add(control);
 

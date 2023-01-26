@@ -1,10 +1,10 @@
 import {Component} from "./Component";
-import {Group } from "three";
+import type {Mesh} from "three";
 
 class MeshComp extends Component {
-    mesh?: Group = new Group();
+    mesh?: Mesh
 
-    constructor(mesh?: Group) {
+    constructor(mesh?: Mesh) {
         super();
         this.mesh = mesh;
     }

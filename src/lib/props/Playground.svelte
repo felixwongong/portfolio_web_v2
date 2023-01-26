@@ -24,6 +24,7 @@
                     <GameObject>
                         <Transform/>
                         <StaticMesh src={coffee}></StaticMesh>
+                        <Rotator/>
                     </GameObject>
                     <GameObject>
                         <Transform position={Object3D.DefaultUp}/>
