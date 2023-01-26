@@ -25,7 +25,7 @@
     });
 </script>
 
-<div class="navbar bg-base-100">
+<div class="absolute navbar bg-base-100">
     <div class="navbar-start">
         <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
