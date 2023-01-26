@@ -4,8 +4,8 @@
     import {onMount} from "svelte";
 
     const variants = {
-        hidden: {scale: 0},
-        visible: {scale: 1}
+        hidden: {scale: 0, opacity: 0},
+        visible: {scale: 1, opacity: 1}
     }
 
     let curV = "hidden";
@@ -21,7 +21,7 @@
     }
 </script>
 
-<div class="w-full h-auto chat chat-end absolute bottom-0 p-2">
+<div class="w-full h-auto chat chat-end absolute bottom-0 p-2 z-20">
     <div class="chat-image avatar">
         <div class="w-10 rounded-full">
             <img src="{coffee}" alt="message-box" class="cursor-pointer" on:click={Toggle}/>
