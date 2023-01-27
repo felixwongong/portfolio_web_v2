@@ -55,12 +55,12 @@
 
 <Playground/>
 
-<div class="divider max-w-screen-sm mx-auto">HI DIVIDER 1</div>
+<div class="divider max-w-screen-sm mx-auto">I GO TO SCHOOL BY BUS</div>
 
 <MockSection class="relative">
     <ParticlesBG/>
     <div class="absolute top-0 left-0  w-full h-full my-auto mx-auto overflow-hidden">
-        <div class="absolute top-1/2 -translate-y-1/2 w-full flex justify-between z-50 px-1.5 pointer-events-none">
+        <div class="absolute top-1/2 -translate-y-full w-full flex justify-between z-50 px-1.5 pointer-events-none">
             <button class="btn btn-circle pointer-events-auto" on:click={() => { c = -1; isOn--;}}>{'<'}</button>
             <button class="btn btn-circle pointer-events-auto" on:click={() => { c = 1; isOn++;}}>{'>'}</button>
         </div>
@@ -78,7 +78,7 @@
                     transition={{ x: { type: 'spring', stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
                     {variants}>
                 {#if Math.abs(isOn) % 3 !== 0}
-                    <MockItem motion="{motion}">{Math.abs(isOn) % 3}</MockItem>
+                    <MockItem motion="{motion}">You want to see what in here~?</MockItem>
                 {:else }
                     <TypingMockItem motion="{motion}"/>
                 {/if}
