@@ -1,12 +1,6 @@
 <script>
 import Hero from "./Hero.svelte";
-import EmoBar from "$lib/props/EmoBar.svelte";
-import Message from "$lib/props/Message.svelte";
-import Playground from "$lib/props/Playground.svelte";
-import MockSection from "$lib/props/MockSection.svelte";
-import ParticlesBG from "$lib/props/ParticlesBG.svelte";
-import TypingMockItem from "../lib/props/TypingMockItem.svelte";
-import MockItem from "../lib/props/MockItem.svelte";
+import {EmoBar, Playground, MockSection, ParticlesBG, TypingMockItem, MockItem, Message} from "$lib/props";
 
 </script>
 
