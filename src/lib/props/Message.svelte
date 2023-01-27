@@ -31,7 +31,7 @@
     <Motion animate={curV} initial="hidden" let:motion transition={{ duration: .3 }} {variants}>
         <div class="chat-bubble origin-bottom-right" use:motion>
             <p>I am remaking the cofy.dev website!</p>
-            <p>Old version: <a class="link-accent" href="https://cofydev.vercel.app/" target="_blank">Vercel link</a></p>
+            <p>Old version: <a class="link-accent" href="https://cofydev.vercel.app/" target="_blank" rel="noopener noreferrer">Vercel link</a></p>
         </div>
     </Motion>
 </div>

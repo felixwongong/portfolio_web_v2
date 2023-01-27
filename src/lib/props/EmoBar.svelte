@@ -48,7 +48,7 @@
         setTimeout(() => curV = "visible", 500)
         let i;
         for (i = 0; i < sections.length; i++) {
-            if (window.pageYOffset < sections[i].offsetTop) {
+            if (window.pageYOffset + window.innerHeight / 2 < sections[i].offsetTop) {
                 sections[i].scrollIntoView({
                     behavior: "smooth"
                 })
