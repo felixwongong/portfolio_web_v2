@@ -23,7 +23,7 @@
 
 <div class="w-full h-auto chat chat-end absolute bottom-0 p-2 z-20">
     <div class="chat-image avatar">
-        <div class="w-10 rounded-full">
+        <div class="w-10 rounded-full bg-base-100 dark:bg-secondary rounded">
             <img src="{coffee}" alt="message-box" class="cursor-pointer" on:click={Toggle}/>
         </div>
     </div>

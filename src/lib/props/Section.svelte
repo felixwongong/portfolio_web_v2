@@ -1,5 +1,5 @@
 <script>
-    export let isFullScreen
+    export let isFullScreen = false;
 </script>
 
 <section
