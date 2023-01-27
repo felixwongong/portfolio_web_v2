@@ -45,13 +45,16 @@
 
     onMount(() => {
         document.getElementById("tsparticles").style.height = "100%";
+        document.getElementById("tsparticles").style.zIndex = "-1";
     })
 </script>
 
-<Particles
-        id="tsparticles"
-        options="{particlesConfig}"
-        on:particlesLoaded="{onParticlesLoaded}"
-        particlesInit="{particlesInit}"
-/>
+<div class="static top-0 h-full w-full">
+    <Particles
+            id="tsparticles"
+            options="{particlesConfig}"
+            on:particlesLoaded="{onParticlesLoaded}"
+            particlesInit="{particlesInit}"
+    />
+</div>
 
