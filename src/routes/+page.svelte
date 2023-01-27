@@ -43,8 +43,13 @@ onMount(() => {
 
 <MockSection class="relative">
     <ParticlesBG />
-    <div class="absolute top-0 left-0  w-full h-full my-auto mx-auto flex justify-center items-center">
-        <h2 id="typewriter" class="text-center text-3xl my-auto mx-auto"></h2>
+    <div class="absolute top-0 left-0  w-full h-full my-auto mx-auto overflow-visible">
+        <div class="absolute w-full h-full flex justify-center items-center">
+            <h2 id="typewriter" class="text-center text-3xl"></h2>
+        </div>
+        <div class="absolute w-full h-full flex justify-center items-center translate-x-full">
+            <h2 class="text-center text-3xl">2222222222222222</h2>
+        </div>
     </div>
 </MockSection>
 
