@@ -5,32 +5,9 @@ import Message from "$lib/props/Message.svelte";
 import Playground from "$lib/props/Playground.svelte";
 import MockSection from "$lib/props/MockSection.svelte";
 import ParticlesBG from "$lib/props/ParticlesBG.svelte";
+import TypingMockItem from "../lib/props/TypingMockItem.svelte";
+import MockItem from "../lib/props/MockItem.svelte";
 
-import Typewriter from 'typewriter-effect/dist/core';
-import {onMount} from "svelte";
-
-onMount(() => {
-    const htmlEl = document.querySelector("#typewriter");
-
-    let typewriter = new Typewriter("#typewriter", {
-        delay: 75,
-    });
-
-    let observer = new IntersectionObserver(function(entries) {
-        if(entries[0].isIntersecting === true) {
-            typewriter
-                .deleteAll()
-                .typeString('Debug.log($env.MY_MESSAGE)')
-                .pauseFor(3000)
-                .deleteAll(0.0000000000000000000001)
-                .pasteString("<h3>Hello Universe!\n</h3><h3>Welcome to my site!</h3>")
-                .pauseFor(2000)
-                .start();
-        }
-    }, { threshold: [1] });
-
-    observer.observe(htmlEl);
-})
 </script>
 
 <Hero />
@@ -44,12 +21,11 @@ onMount(() => {
 <MockSection class="relative">
     <ParticlesBG />
     <div class="absolute top-0 left-0  w-full h-full my-auto mx-auto overflow-visible">
-        <div class="absolute w-full h-full flex justify-center items-center">
-            <h2 id="typewriter" class="text-center text-3xl"></h2>
-        </div>
-        <div class="absolute w-full h-full flex justify-center items-center translate-x-full">
+        <TypingMockItem/>
+        <MockItem>
             <h2 class="text-center text-3xl">2222222222222222</h2>
-        </div>
+        </MockItem>
+
     </div>
 </MockSection>
 
