@@ -4,6 +4,7 @@ import EmoBar from "$lib/props/EmoBar.svelte";
 import Message from "$lib/props/Message.svelte";
 import Playground from "$lib/props/Playground.svelte";
 import MockSection from "$lib/props/MockSection.svelte";
+import ParticlesBG from "../lib/props/ParticlesBG.svelte";
 </script>
 
 <Hero />
@@ -15,7 +16,7 @@ import MockSection from "$lib/props/MockSection.svelte";
 <div class="divider max-w-screen-sm mx-auto">HI DIVIDER 1</div>
 
 <MockSection>
-
+    <ParticlesBG />
 </MockSection>
 
 

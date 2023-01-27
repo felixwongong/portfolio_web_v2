@@ -8,8 +8,11 @@
 
     function setEmoticon() {
         const keys = Object.keys(emoticonSet);
-        curEmoticon =
-            emoticonSet[keys[(keys.length * Math.random()) << 0]].ascii;
+
+        do {
+            curEmoticon =
+                emoticonSet[keys[(keys.length * Math.random()) << 0]].ascii;
+        } while (!curEmoticon || curEmoticon.length > 15)
         emoticonProps = [];
         for (let i = 0; i < curEmoticon.length; i++) {
             emoticonProps.push({
