@@ -7,11 +7,13 @@
     onMount(() => {
         const htmlEl = document.querySelector("#typewriter");
 
+        let typewriter = new Typewriter("#typewriter", {
+            delay: 75,
+        });
+
         let observer = new IntersectionObserver(function(entries) {
             if(entries[0].isIntersecting === true) {
-                let typewriter = new Typewriter("#typewriter", {
-                    delay: 75,
-                });
+
                 typewriter
                     .deleteAll()
                     .typeString('Debug.log($env.MY_MESSAGE)')
@@ -27,6 +29,6 @@
     })
 </script>
 
-<div class="absolute w-full h-full flex justify-center items-center" use:motion>
-    <h2 id="typewriter" class="text-center text-3xl"></h2>
+<div class="absolute w-full h-full flex justify-center items-start" use:motion>
+    <h2 id="typewriter" class="text-center md:text-3xl text-2xl my-40"></h2>
 </div>
