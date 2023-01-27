@@ -6,9 +6,9 @@
 <div class="font-comic bg-base-200 min-h-screen box-border">
     <Navbar />
     <slot/>
-    <footer class="footer footer-center p-10 text-primary-content">
+    <footer class="footer footer-center p-10 text-base">
         <div>
-            <img width="50" height="50" src="{coffee}">
+            <img width="50" height="50" src="{coffee}" class="bg-base-100 dark:bg-secondary rounded">
             <p class="font-bold">
                 Cofy Dev <br/>Portfolio created by Felix
             </p>

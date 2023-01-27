@@ -7,15 +7,6 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      colors: {
-        primary: "#EFE2BA",
-        secondary: "#D79922",
-        tertiary: "",
-        success: "#4056A1",
-        warning: "#F13C20",
-        error: "",
-        neutral: "#C5CBE3"
-      },
       fontFamily: {
         comic: ["Comic Neue"]
       }
@@ -23,6 +14,7 @@ module.exports = {
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
-    themes: ["retro", "luxary"],
+    themes: ["retro", "night"],
+    darkTheme: "night",
   },
 }

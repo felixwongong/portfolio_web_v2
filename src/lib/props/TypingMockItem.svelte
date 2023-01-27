@@ -30,5 +30,5 @@
 </script>
 
 <div class="absolute w-full h-full flex justify-center items-start" use:motion>
-    <h2 id="typewriter" class="text-center md:text-3xl text-2xl my-40"></h2>
+    <h2 id="typewriter" class="text-center md:text-3xl text-2xl my-40 dark:text-primary-content"></h2>
 </div>

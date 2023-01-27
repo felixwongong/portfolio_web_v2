@@ -92,7 +92,7 @@
         <ul class="mx-auto max-w-md flex flex-row justify-center">
             {#each emoticonProps as prop}
                 <li class="w-3.5">
-                    <h6 class="dark:text-yellow-300 font-bold {prop.hasPopped ? 'anim_popOut' : ''}">
+                    <h6 class="font-bold {prop.hasPopped ? 'anim_popOut' : ''}">
                         {prop.icon}
                     </h6>
                 </li>

@@ -19,8 +19,10 @@
         const html = document.querySelector("html");
         if (newVal) {
             html.classList.add("dark");
+            html.setAttribute("data-theme", "luxary")
         } else{
             html.classList.remove("dark");
+            html.setAttribute("data-theme", "retro")
         }
     }
 
@@ -49,7 +51,7 @@
         </ul>
     </div>
     <div class="navbar-end">
-        <div class="navbar-end w-10 h-10 my-auto" on:click={toggleNightMode}>
+        <div class="navbar-end w-10 h-10 my-auto bg-base-100 dark:bg-secondary rounded" on:click={toggleNightMode}>
             <img src={$isNightMode ? moon: sun} alt="toggleNightMode" class="object-scale-down">
         </div>
     </div>
