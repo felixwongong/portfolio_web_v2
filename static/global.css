@@ -5563,6 +5563,11 @@ html{
   background-color: rgb(191 219 254 / var(--tw-bg-opacity));
 }
 
+.bg-base-300{
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
+}
+
 .bg-opacity-75{
   --tw-bg-opacity: 0.75;
 }
@@ -6096,6 +6101,11 @@ html{
   font-family: Comic Neue;
 }
 
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -6119,11 +6129,6 @@ html{
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-base{
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .text-3xl{
@@ -6247,16 +6252,6 @@ html{
 
 .tracking-widest{
   letter-spacing: 0.1em;
-}
-
-.text-base-content{
-  --tw-text-opacity: 1;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-}
-
-.text-primary-content{
-  --tw-text-opacity: 1;
-  color: hsl(var(--pc) / var(--tw-text-opacity));
 }
 
 .text-base-300{
@@ -8153,12 +8148,22 @@ html{
   background-color: rgb(251 207 232 / var(--tw-bg-opacity));
 }
 
+.dark .dark\:bg-primary{
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+}
+
 .dark .dark\:bg-opacity-80{
   --tw-bg-opacity: 0.8;
 }
 
 .dark .dark\:fill-gray-300{
   fill: #d1d5db;
+}
+
+.dark .dark\:text-primary-content{
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-white{
@@ -8399,11 +8404,6 @@ html{
 .dark .dark\:text-pink-800{
   --tw-text-opacity: 1;
   color: rgb(157 23 77 / var(--tw-text-opacity));
-}
-
-.dark .dark\:text-primary-content{
-  --tw-text-opacity: 1;
-  color: hsl(var(--pc) / var(--tw-text-opacity));
 }
 
 .dark .dark\:decoration-blue-600{
