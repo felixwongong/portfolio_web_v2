@@ -52,6 +52,9 @@
 		"daisyui": "^2.47.1",
 		"firebase": "^9.16.0",
 		"svelte": "^3.54.0",
-		"three": "^0.148.0"
+		"svelte-particles": "^2.8.0",
+		"three": "^0.148.0",
+		"tsparticles": "^2.8.0",
+		"tsparticles-engine": "^2.8.0"
 	}
 }

@@ -5,13 +5,15 @@
     import {AmbientLight, DirectionalLight} from "../svelte-three/Light";
     import {Euler, Object3D, Vector3} from "three";
     import Rotator from "../svelte-three-custom/Rotator.svelte";
+    import Section from "./Section.svelte";
 
 
     let isFullScreen = false;
 </script>
 
-<section
-        class="{isFullScreen ? 'max-w-screen': 'max-w-screen-md' } h-screen md:mx-auto mx-3 py-10 flex md:justify-between justify-evenly md:flex-row flex-col"
+<Section
+        class="flex md:justify-between justify-evenly md:flex-row flex-col"
+        isFullScreen={false}
 >
     <div class="flex flex-col justify-start flex-wrap prose">
         <h2 class="block" contenteditable>A Game Developer, and Web Developer</h2>
@@ -45,4 +47,4 @@
             <h6>Coffee addict</h6>
         </div>
     </div>
-</section>
+</Section>
