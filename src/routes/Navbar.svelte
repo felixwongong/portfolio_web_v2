@@ -17,7 +17,11 @@
 
     function setDarkMode(newVal: number) {
         const html = document.querySelector("html");
-        if (newVal) html.classList.add("dark"); else html.classList.remove("dark");
+        if (newVal) {
+            html.classList.add("dark");
+        } else{
+            html.classList.remove("dark");
+        }
     }
 
     onMount(() => {
