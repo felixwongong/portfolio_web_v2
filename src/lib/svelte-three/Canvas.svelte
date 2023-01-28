@@ -30,7 +30,6 @@
     setContext(ContextKey.SCENE_STORE, mainScene);
     setContext(ContextKey.HOOK, eventFunc)
 
-
     let frameCount: number = 0;
     let curTime: number = 0;
 
