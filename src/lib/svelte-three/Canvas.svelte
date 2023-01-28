@@ -2,15 +2,18 @@
     import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
-    import {writable} from "svelte/store";
+    import {get , writable} from "svelte/store";
+    import type {Writable} from "svelte/store";
     import type {EventFunc, AsyncHook} from "./Hooks";
 
+    export let precision = "mediump";
+    export let antialias = false;
 
     let resizeObserver: ResizeObserver;
 
     let container: HTMLElement;
     let threeCanvas: HTMLCanvasElement;
-    let renderer: writable<WebGLRenderer> = writable();
+    let renderer: Writable<WebGLRenderer> = writable();
 
     let camera = writable<PerspectiveCamera>();
     let mainScene = writable<Scene>();
@@ -26,7 +29,6 @@
     setContext(ContextKey.RENDER_STORE, renderer);
     setContext(ContextKey.SCENE_STORE, mainScene);
     setContext(ContextKey.HOOK, eventFunc)
-
 
 
     let frameCount: number = 0;
@@ -59,10 +61,11 @@
     function CanvasResize() {
         $renderer = new WebGLRenderer({
             canvas: threeCanvas,
-            precision: "highp",
+            precision: precision,
             alpha: true,
-            antialias: true,
+            antialias: antialias,
         });
+
 
         const {width, height} = container.getBoundingClientRect();
         const needResize = $renderer.domElement.width !== width || $renderer.domElement.height !== height;
