@@ -7,7 +7,7 @@
     import type {EventFunc, AsyncHook} from "./Hooks";
 
     export let precision = "mediump";
-    export let antialias = false;
+    export let antialias = true;
 
     let resizeObserver: ResizeObserver;
 
@@ -19,6 +19,7 @@
     let mainScene = writable<Scene>();
     let updateActions: AsyncHook[] = [];
     let startAction: AsyncHook[] = [];
+
 
     const eventFunc: EventFunc = {
         Update: (action:AsyncHook) => updateActions.push(action),
@@ -92,6 +93,7 @@
 
     onDestroy(() => {
         resizeObserver?.unobserve(container);
+        get(renderer)?.dispose();
     })
 </script>
 

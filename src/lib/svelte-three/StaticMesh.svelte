@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {getContext, onMount} from "svelte";
+    import {getContext, onDestroy, onMount} from "svelte";
     import {Group, Scene} from "three";
     import {ContextKey} from "./ContextKey";
     import TransformComp from "./ComponentClass/TransformComp";
@@ -32,7 +32,6 @@
 
     AddComponent(m_mesh)
 
-
     Start(() => {
         loader.load(src, function (fbx) {
             const mesh = fbx.scene.children[0];
@@ -45,5 +44,12 @@
         }, undefined, function (err) {
             console.log(err)
         })
+    })
+
+    onDestroy(() => {
+        if(!m_mesh.mesh) return;
+        console.log("object dispose")
+        m_mesh.mesh.geometry.dispose();
+        m_mesh.mesh.material.dispose();
     })
 </script>

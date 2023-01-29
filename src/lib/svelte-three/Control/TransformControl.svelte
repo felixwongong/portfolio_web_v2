@@ -1,6 +1,6 @@
 <script lang="ts">
     import {TransformControls} from "../three/TransformControls.js";
-    import {getContext, onMount} from "svelte";
+    import {getContext, onDestroy, onMount} from "svelte";
     import {ContextKey} from "../ContextKey";
     import {Camera, Mesh, Object3D, Scene, Vector2} from "three";
     import { EMode, Mode } from "../Setting/Setting.ts";
@@ -88,5 +88,9 @@
         })
 
         $renderer.domElement.addEventListener("dblclick", OnDbClick)
+    })
+
+    onDestroy(() => {
+        control?.dispose();
     })
 </script>
