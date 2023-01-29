@@ -29,7 +29,7 @@
     </div>
 
     <Motion animate={curV} initial="hidden" let:motion transition={{ duration: .3 }} {variants}>
-        <div class="chat-bubble origin-bottom-right" use:motion>
+        <div class="chat-bubble origin-bottom-right pointer-events-auto" use:motion>
             <p>I am remaking website!</p>
             <p>becuz I forgot to pay for the old db fee</p>
             <p>Old version: <a class="link-accent" href="https://cofydev.vercel.app/" target="_blank" rel="noopener noreferrer">Vercel link</a></p>
