@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {PerspectiveCamera, Scene, WebGLRenderer, Cache} from "three";
+    import {PerspectiveCamera, Scene, WebGLRenderer, Cache, LoadingManager} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {get , writable} from "svelte/store";
@@ -21,6 +21,13 @@
     let updateActions: AsyncHook[] = [];
     let startAction: AsyncHook[] = [];
 
+    let prepared = false;
+    let loadingManager = new LoadingManager(() => {
+        console.log("scene is ready")
+        prepared = true
+    });
+
+    setContext<LoadingManager>(ContextKey.LOADING, loadingManager);
 
     const eventFunc: EventFunc = {
         Update: (action:AsyncHook) => updateActions.push(action),
@@ -43,6 +50,7 @@
     }
 
     async function Update(time: number) {
+        if(!prepared) {requestAnimationFrame(Update); return;}
         $renderer.setRenderTarget(null);
         $renderer.clear();
         $renderer.render($mainScene, $camera);
