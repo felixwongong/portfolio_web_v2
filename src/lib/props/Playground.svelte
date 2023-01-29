@@ -1,5 +1,5 @@
 <script>
-    import {Canvas, Scene, GameObject, Transform, StaticMesh, Perspective} from "../svelte-three"
+    import {Canvas, GameObject, Perspective, Scene, StaticMesh, Transform} from "../svelte-three"
 
     import coffee from "$lib/assets/model/coffee.glb"
     import {AmbientLight, DirectionalLight} from "../svelte-three/Light";
@@ -9,6 +9,7 @@
 
 
     let isFullScreen = false;
+    let startLoad = false;
 </script>
 
 <Section
@@ -22,23 +23,25 @@
     </div>
     <div class="card glass card-bordered card-side card-compact shadow-xl h-fit w-fit mx-auto">
         <div class="w-1/3 my-auto">
-            <Canvas>
-                <Scene>
-                    <GameObject>
-                        <Transform/>
-                        <StaticMesh src={coffee}></StaticMesh>
-                        <Rotator/>
-                    </GameObject>
-                    <GameObject>
-                        <Transform position={Object3D.DefaultUp}/>
-                        <DirectionalLight />
-                    </GameObject>
-                    <GameObject>
-                        <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)} />
-                    </GameObject>
-                    <AmbientLight />
-                </Scene>
-            </Canvas>
+            {#if startLoad}
+                <Canvas>
+                    <Scene>
+                        <GameObject>
+                            <Transform/>
+                            <StaticMesh src={coffee}></StaticMesh>
+                            <Rotator/>
+                        </GameObject>
+                        <GameObject>
+                            <Transform position={Object3D.DefaultUp}/>
+                            <DirectionalLight/>
+                        </GameObject>
+                        <GameObject>
+                            <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)}/>
+                        </GameObject>
+                        <AmbientLight/>
+                    </Scene>
+                </Canvas>
+            {/if}
         </div>
         <div class="card-body">
             <h2 class="card-title">WONG YUEN LAM</h2>
