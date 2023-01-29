@@ -9,7 +9,7 @@
 
 
     let isFullScreen = false;
-    let startLoad = false;
+    let startLoad = true;
 </script>
 
 <Section
