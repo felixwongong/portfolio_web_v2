@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {OrbitControls} from "../three/OrbitControls";
-    import {getContext} from "svelte";
+    import {OrbitControls} from "../three/OrbitControls.js";
+    import {getContext, onDestroy} from "svelte";
     import {ContextKey} from "../ContextKey";
     import type {Writable} from "svelte/store";
     import {PerspectiveCamera} from "three";
@@ -26,5 +26,9 @@
 
     Update(() => {
         control.update();
+    })
+
+    onDestroy(() => {
+        control?.dispose();
     })
 </script>
