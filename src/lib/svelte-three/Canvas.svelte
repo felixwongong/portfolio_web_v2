@@ -95,6 +95,10 @@
         requestAnimationFrame(Update);
     }
 
+    onMount(() => {
+        Init();
+    })
+
     onDestroy(() => {
         resizeObserver?.unobserve(container);
         $renderer?.setRenderTarget(null);

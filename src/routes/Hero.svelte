@@ -7,19 +7,12 @@
     import chair from "$lib/assets/model/chair.glb"
     import desk from "$lib/assets/model/desk.glb"
     import Setting from "$lib/svelte-three/Setting/Setting.svelte";
-    import {onMount} from "svelte";
 
-    let LoadCanvas;
-
-    onMount(() => {
-        console.log("Hero loaded")
-        setTimeout(() => LoadCanvas(), 3000);
-    })
 </script>
 
 <section class="h-screen w-full">
     <Setting/>
-        <Canvas class="w-full h-screen" bind:InitAction={LoadCanvas}>
+        <Canvas class="w-full h-screen">
             <Scene>
                 <GameObject>
                     <Transform/>
