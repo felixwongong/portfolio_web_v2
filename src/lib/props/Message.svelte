@@ -21,8 +21,8 @@
     }
 </script>
 
-<div class="w-full h-auto chat chat-end absolute bottom-0 p-2 z-20">
-    <div class="chat-image avatar">
+<div class="w-full h-auto chat chat-end absolute bottom-0 p-2 z-20 pointer-events-none">
+    <div class="chat-image avatar pointer-events-auto">
         <div class="w-10 rounded-full bg-base-100 dark:bg-secondary rounded">
             <img src="{coffee}" alt="message-box" class="cursor-pointer" on:click={Toggle}/>
         </div>
@@ -30,7 +30,8 @@
 
     <Motion animate={curV} initial="hidden" let:motion transition={{ duration: .3 }} {variants}>
         <div class="chat-bubble origin-bottom-right" use:motion>
-            <p>I am remaking the cofy.dev website!</p>
+            <p>I am remaking website!</p>
+            <p>becuz I forgot to pay for the old db fee</p>
             <p>Old version: <a class="link-accent" href="https://cofydev.vercel.app/" target="_blank" rel="noopener noreferrer">Vercel link</a></p>
         </div>
     </Motion>
