@@ -81,6 +81,12 @@
         }
     }
 
+    onMount(() => {
+        setTimeout(() => {
+            Init();
+        }, 500)
+    })
+
     async function Init() {
         CanvasResize();
 
@@ -93,13 +99,6 @@
 
         requestAnimationFrame(Update);
     }
-
-    onMount(() => {
-        document.querySelector("html").addEventListener("load", () => {
-            console.log(`Start loading canvas ${id}`)
-            Init();
-        })
-    })
 
     onDestroy(() => {
         resizeObserver?.unobserve(container);
@@ -122,6 +121,7 @@
   </SavingsCard>
   ```
  -->
+
 <div bind:this={container} class="{$$props.class}" id={id}>
     <canvas bind:this={threeCanvas} class="w-full h-full">
         <slot/>
