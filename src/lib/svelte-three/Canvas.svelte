@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
+    import {PerspectiveCamera, Scene, WebGLRenderer, Cache} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {get , writable} from "svelte/store";
@@ -105,6 +105,7 @@
         $renderer?.setRenderTarget(null);
         $renderer?.clear();
         $renderer?.dispose();
+        Cache.clear();
     })
 </script>
 
