@@ -70,6 +70,7 @@
     }
 
     function CanvasResize() {
+        console.log("resizing 3d canvas")
         $renderer = new WebGLRenderer({
             canvas: threeCanvas,
             precision: precision,
@@ -78,6 +79,7 @@
         });
 
 
+        if(!container) return;
         const {width, height} = container.getBoundingClientRect();
         const needResize = $renderer.domElement.width !== width || $renderer.domElement.height !== height;
 
@@ -100,16 +102,10 @@
 
         await Start();
 
-        // resizeObserver = new ResizeObserver(_ => {
-        //     CanvasResize();
-        // })
-        // resizeObserver.observe(container);
-
         requestAnimationFrame(Update);
     }
 
     onDestroy(() => {
-        // resizeObserver?.unobserve(container);
         $renderer?.setRenderTarget(null);
         $renderer?.clear();
         $renderer?.dispose();
@@ -131,6 +127,7 @@
   ```
  -->
 
+<svelte:window  on:resize={CanvasResize}/>
 <div bind:this={container} class="{$$props.class}" id={id}>
     <canvas bind:this={threeCanvas} class="w-full h-full">
         <slot/>
