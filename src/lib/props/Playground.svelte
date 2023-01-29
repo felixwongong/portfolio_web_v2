@@ -1,5 +1,5 @@
 <script>
-    import {Canvas, Scene, GameObject, Transform, StaticMesh, Perspective} from "../svelte-three"
+    import {Canvas, GameObject, Perspective, Scene, StaticMesh, Transform} from "../svelte-three"
 
     import coffee from "$lib/assets/model/coffee.glb"
     import {AmbientLight, DirectionalLight} from "../svelte-three/Light";
@@ -31,12 +31,12 @@
                     </GameObject>
                     <GameObject>
                         <Transform position={Object3D.DefaultUp}/>
-                        <DirectionalLight />
+                        <DirectionalLight/>
                     </GameObject>
                     <GameObject>
-                        <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)} />
+                        <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)}/>
                     </GameObject>
-                    <AmbientLight />
+                    <AmbientLight/>
                 </Scene>
             </Canvas>
         </div>

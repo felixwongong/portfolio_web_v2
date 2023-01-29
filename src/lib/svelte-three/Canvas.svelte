@@ -6,6 +6,7 @@
     import type {Writable} from "svelte/store";
     import type {EventFunc, AsyncHook} from "./Hooks";
 
+    export let id = Math.floor(Math.random() * 999);
     export let precision = "mediump";
     export let antialias = true;
 
@@ -26,6 +27,7 @@
         Start:(action:AsyncHook) => startAction.push(action),
     }
 
+
     setContext(ContextKey.CAM_STORE, camera);
     setContext(ContextKey.RENDER_STORE, renderer);
     setContext(ContextKey.SCENE_STORE, mainScene);
@@ -34,7 +36,6 @@
     let frameCount: number = 0;
     let curTime: number = 0;
 
-
     async function Start() {
         for(let i = 0; i < startAction.length; i++) {
             await startAction[i]();
@@ -42,6 +43,8 @@
     }
 
     async function Update(time: number) {
+        $renderer.setRenderTarget(null);
+        $renderer.clear();
         $renderer.render($mainScene, $camera);
 
         for(let i = 0; i < updateActions.length; i++) {
@@ -78,7 +81,13 @@
         }
     }
 
-    onMount(async () => {
+    onMount(() => {
+        setTimeout(() => {
+            Init();
+        }, 500)
+    })
+
+    async function Init() {
         CanvasResize();
 
         await Start();
@@ -89,11 +98,13 @@
         resizeObserver.observe(container);
 
         requestAnimationFrame(Update);
-    })
+    }
 
     onDestroy(() => {
         resizeObserver?.unobserve(container);
-        get(renderer)?.dispose();
+        $renderer?.setRenderTarget(null);
+        $renderer?.clear();
+        $renderer?.dispose();
     })
 </script>
 
@@ -110,7 +121,8 @@
   </SavingsCard>
   ```
  -->
-<div bind:this={container} class="{$$props.class}" id="container">
+
+<div bind:this={container} class="{$$props.class}" id={id}>
     <canvas bind:this={threeCanvas} class="w-full h-full">
         <slot/>
     </canvas>
