@@ -100,16 +100,16 @@
 
         await Start();
 
-        resizeObserver = new ResizeObserver(_ => {
-            CanvasResize();
-        })
-        resizeObserver.observe(container);
+        // resizeObserver = new ResizeObserver(_ => {
+        //     CanvasResize();
+        // })
+        // resizeObserver.observe(container);
 
         requestAnimationFrame(Update);
     }
 
     onDestroy(() => {
-        resizeObserver?.unobserve(container);
+        // resizeObserver?.unobserve(container);
         $renderer?.setRenderTarget(null);
         $renderer?.clear();
         $renderer?.dispose();
