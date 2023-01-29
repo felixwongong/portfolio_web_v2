@@ -7,7 +7,6 @@
     import type {EventFunc, AsyncHook} from "./Hooks";
 
     export let id = Math.floor(Math.random() * 999);
-    export const InitAction = Init;
     export let precision = "mediump";
     export let antialias = true;
 
@@ -96,7 +95,10 @@
     }
 
     onMount(() => {
-        Init();
+        document.querySelector("html").addEventListener("load", () => {
+            console.log(`Start loading canvas ${id}`)
+            Init();
+        })
     })
 
     onDestroy(() => {

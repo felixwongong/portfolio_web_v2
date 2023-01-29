@@ -9,7 +9,6 @@
 
 
     let isFullScreen = false;
-    let startLoad = true;
 </script>
 
 <Section
@@ -23,25 +22,23 @@
     </div>
     <div class="card glass card-bordered card-side card-compact shadow-xl h-fit w-fit mx-auto">
         <div class="w-1/3 my-auto">
-            {#if startLoad}
-                <Canvas>
-                    <Scene>
-                        <GameObject>
-                            <Transform/>
-                            <StaticMesh src={coffee}></StaticMesh>
-                            <Rotator/>
-                        </GameObject>
-                        <GameObject>
-                            <Transform position={Object3D.DefaultUp}/>
-                            <DirectionalLight/>
-                        </GameObject>
-                        <GameObject>
-                            <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)}/>
-                        </GameObject>
-                        <AmbientLight/>
-                    </Scene>
-                </Canvas>
-            {/if}
+            <Canvas>
+                <Scene>
+                    <GameObject>
+                        <Transform/>
+                        <StaticMesh src={coffee}></StaticMesh>
+                        <Rotator/>
+                    </GameObject>
+                    <GameObject>
+                        <Transform position={Object3D.DefaultUp}/>
+                        <DirectionalLight/>
+                    </GameObject>
+                    <GameObject>
+                        <Perspective position={new Vector3(0, 2, 3)} rotation={new Euler(-0.3, 0, 0)}/>
+                    </GameObject>
+                    <AmbientLight/>
+                </Scene>
+            </Canvas>
         </div>
         <div class="card-body">
             <h2 class="card-title">WONG YUEN LAM</h2>
