@@ -19,7 +19,6 @@
 
     let control: TransformControls;
     let rc = new RaycastUtil();
-
     let lastHitObject: Object3D;
 
     function SelectObject(event: MouseEvent) {
