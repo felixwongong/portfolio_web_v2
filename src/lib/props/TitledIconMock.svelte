@@ -1,10 +1,8 @@
 <script lang="ts">
     import {Motion} from "svelte-motion";
 
-    import Fa from "svelte-fa";
-
-    import {onMount, setContext} from "svelte";
-    import {MockItem, Icon} from "$lib/props";
+    import {onMount} from "svelte";
+    import {Icon, MockItem} from "$lib/props";
 
     export let title = "Default title";
     export let icons = [];
@@ -27,14 +25,12 @@
         <h2 class="text-center md:text-3xl text-2xl dark:text-primary-content">{title}</h2>
         <div bind:this={area} class="flex-1 relative">
             {#each icons as icon, i}
-                <Motion drag dragConstraints={{current:area}} let:motion>
                     <Icon top="{Math.ceil((i + 1) / 3) * yPercent}"
                           left="{(i % 3 + 1) * 25}"
                           iconType="{iconType}"
                           icon="{icon}"
-                          motion="{motion}"
+                          movableArea={area}
                     />
-                </Motion>
             {/each}
         </div>
     </div>
