@@ -1,14 +1,14 @@
 <script lang="ts">
     import {getContext, onDestroy, onMount} from "svelte";
-    import {Group, Scene} from "three";
+    import {Group, LoadingManager, Scene} from "three";
     import {ContextKey} from "./ContextKey";
     import TransformComp from "./ComponentClass/TransformComp";
 
-    import {GLTFLoader} from "./three/GLTFLoader";
+    import {GLTFLoader} from "./three/GLTFLoader.js";
     import type {Writable} from "svelte/store";
     import {MeshComp} from "./ComponentClass";
     import type {EventFunc} from "./Hooks";
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader(getContext<LoadingManager>(ContextKey.LOADING));
 
     const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
     const scene = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
@@ -32,7 +32,7 @@
 
     AddComponent(m_mesh)
 
-    Start(() => {
+    Start(async () => {
         loader.load(src, function (fbx) {
             const mesh = fbx.scene.children[0];
             m_mesh.mesh = mesh;

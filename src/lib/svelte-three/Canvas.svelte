@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
+    import {PerspectiveCamera, Scene, WebGLRenderer, Cache, LoadingManager} from "three";
     import {onDestroy, onMount, setContext} from "svelte";
     import {ContextKey} from "./ContextKey";
     import {get , writable} from "svelte/store";
@@ -21,6 +21,13 @@
     let updateActions: AsyncHook[] = [];
     let startAction: AsyncHook[] = [];
 
+    let prepared = false;
+    let loadingManager = new LoadingManager(() => {
+        console.log("scene is ready")
+        prepared = true
+    });
+
+    setContext<LoadingManager>(ContextKey.LOADING, loadingManager);
 
     const eventFunc: EventFunc = {
         Update: (action:AsyncHook) => updateActions.push(action),
@@ -43,6 +50,7 @@
     }
 
     async function Update(time: number) {
+        if(!prepared) {requestAnimationFrame(Update); return;}
         $renderer.setRenderTarget(null);
         $renderer.clear();
         $renderer.render($mainScene, $camera);
@@ -62,6 +70,7 @@
     }
 
     function CanvasResize() {
+        console.log("resizing 3d canvas")
         $renderer = new WebGLRenderer({
             canvas: threeCanvas,
             precision: precision,
@@ -70,6 +79,7 @@
         });
 
 
+        if(!container) return;
         const {width, height} = container.getBoundingClientRect();
         const needResize = $renderer.domElement.width !== width || $renderer.domElement.height !== height;
 
@@ -92,19 +102,14 @@
 
         await Start();
 
-        resizeObserver = new ResizeObserver(_ => {
-            CanvasResize();
-        })
-        resizeObserver.observe(container);
-
         requestAnimationFrame(Update);
     }
 
     onDestroy(() => {
-        resizeObserver?.unobserve(container);
         $renderer?.setRenderTarget(null);
         $renderer?.clear();
         $renderer?.dispose();
+        Cache.clear();
     })
 </script>
 
@@ -122,6 +127,7 @@
   ```
  -->
 
+<svelte:window  on:resize={CanvasResize}/>
 <div bind:this={container} class="{$$props.class}" id={id}>
     <canvas bind:this={threeCanvas} class="w-full h-full">
         <slot/>
