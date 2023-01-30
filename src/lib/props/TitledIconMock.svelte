@@ -10,7 +10,7 @@
     export let icons = [];
     export let iconType = "fa";
     export let scrollMotion;
-    
+
     let area;
 
     let level;
