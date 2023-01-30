@@ -6,5 +6,7 @@ import ParticlesBG from "./ParticlesBG.svelte";
 import Playground from "./Playground.svelte";
 import Section from "./Section.svelte";
 import TypingMockItem from "./TypingMockItem.svelte";
+import Tooltip from "./Tooltip.svelte";
+import Icon from "./Icon.svelte";
 
-export {EmoBar, Message, MockItem, MockSection, ParticlesBG, Playground, Section, TypingMockItem};
+export {EmoBar, Message, MockItem, MockSection, ParticlesBG, Playground, Section, TypingMockItem, Tooltip, Icon};

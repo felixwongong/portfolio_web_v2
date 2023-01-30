@@ -5,13 +5,13 @@
     import {EmoBar, Message, MockSection, ParticlesBG, Playground} from "$lib/props";
 
     import {AnimatePresence, Motion} from "svelte-motion";
-    import MockItem from "../lib/props/MockItem.svelte";
     import TypingMockItem from "../lib/props/TypingMockItem.svelte";
     import TitledIconMock from "../lib/props/TitledIconMock.svelte";
 
     import Unity from "$lib/assets/icons/unity.png";
     import Unreal from "$lib/assets/icons/unreal.png";
     import Node from "$lib/assets/icons/node.png";
+    import MockItem from "$lib/props/MockItem.svelte";
 
 
     let isOn = 0;
@@ -79,9 +79,10 @@
                 {#if Math.abs(isOn) % 3 === 0}
                     <TypingMockItem motion="{motion}"/>
                 {:else if Math.abs(isOn) % 3 === 1}
-                    <TitledIconMock scrollMotion="{motion}" icons="{[Unity, Unreal, Node]}" iconType=""></TitledIconMock>
+                    <TitledIconMock scrollMotion="{motion}" title="Survival Tools" icons="{[Unity, Unreal, Node]}" iconType=""></TitledIconMock>
                 {:else}
-                    <MockItem motion="{motion}">You want to see what in here~?</MockItem>
+<!--                    <TitledIconMock scrollMotion="{motion}" title="Portals"></TitledIconMock>-->
+                    <MockItem motion="{motion}">You want to see what in here?</MockItem>
                 {/if}
             </Motion>
         </AnimatePresence>
