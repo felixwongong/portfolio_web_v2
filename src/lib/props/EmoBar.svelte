@@ -89,16 +89,18 @@
             use:motion
             on:click={ScrollSection}
     >
-        <ul class="mx-auto max-w-md flex flex-row justify-center">
-            {#each emoticonProps as prop}
-                <li class="w-3.5">
-                    <h6 class="font-bold {prop.hasPopped ? 'anim_popOut' : ''}">
-                        {prop.icon}
-                    </h6>
-                </li>
-            {/each}
-        </ul>
-        <div>⬇️</div>
+        <div class="border border-black mx-1.5 flex flex-col items-center" style="border-radius: 0.45rem; padding: 0.25rem 1rem;">
+            <ul class="mx-auto max-w-md flex flex-row justify-center">
+                {#each emoticonProps as prop}
+                    <li class="w-3.5">
+                        <h6 class="font-bold {prop.hasPopped ? 'anim_popOut' : ''}">
+                            {prop.icon}
+                        </h6>
+                    </li>
+                {/each}
+            </ul>
+            <div>⬇️</div>
+        </div>
     </div>
 </Motion>
 
@@ -134,10 +136,8 @@
 
     .emo-btn {
         border-radius: 0.5rem;
-        padding: 0.25rem 1rem;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+
         cursor: pointer;
     }
 </style>

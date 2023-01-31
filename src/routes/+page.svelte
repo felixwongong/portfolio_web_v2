@@ -1,11 +1,10 @@
 <script>
-    import {faUnity} from "@fortawesome/free-brands-svg-icons";
+    import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
     import Hero from "./Hero.svelte";
     import {EmoBar, Message, MockSection, ParticlesBG, Playground} from "$lib/props";
 
     import {AnimatePresence, Motion} from "svelte-motion";
-    import MockItem from "../lib/props/MockItem.svelte";
     import TypingMockItem from "../lib/props/TypingMockItem.svelte";
     import TitledIconMock from "../lib/props/TitledIconMock.svelte";
 
@@ -21,7 +20,7 @@
         enter: (direction) => {
             return {
                 x: direction > 0 ? 1000 : -1000,
-                opacity: 0,
+                opacity: 0
             };
         },
         center: {
@@ -74,14 +73,14 @@
                     exit="exit"
                     initial="enter"
                     let:motion
-                    transition={{ x: { type: 'spring', stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
+                    transition={{ x: { type: 'spring', stiffness: 300, damping: 30 }}}
                     {variants}>
                 {#if Math.abs(isOn) % 3 === 0}
                     <TypingMockItem motion="{motion}"/>
                 {:else if Math.abs(isOn) % 3 === 1}
-                    <TitledIconMock scrollMotion="{motion}" icons="{[Unity, Unreal, Node]}" iconType=""></TitledIconMock>
+                    <TitledIconMock scrollMotion="{motion}" title="Survival Tools" icons="{[Unity, Unreal, Node]}" iconType=""></TitledIconMock>
                 {:else}
-                    <MockItem motion="{motion}">You want to see what in here~?</MockItem>
+                    <TitledIconMock scrollMotion="{motion}" title="Portal" icons="{[faGithub, faLinkedin]}"></TitledIconMock>
                 {/if}
             </Motion>
         </AnimatePresence>
