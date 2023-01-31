@@ -1,5 +1,5 @@
 <script>
-    import {faUnity} from "@fortawesome/free-brands-svg-icons";
+    import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
     import Hero from "./Hero.svelte";
     import {EmoBar, Message, MockSection, ParticlesBG, Playground} from "$lib/props";
@@ -11,7 +11,6 @@
     import Unity from "$lib/assets/icons/unity.png";
     import Unreal from "$lib/assets/icons/unreal.png";
     import Node from "$lib/assets/icons/node.png";
-    import MockItem from "$lib/props/MockItem.svelte";
 
 
     let isOn = 0;
@@ -81,8 +80,7 @@
                 {:else if Math.abs(isOn) % 3 === 1}
                     <TitledIconMock scrollMotion="{motion}" title="Survival Tools" icons="{[Unity, Unreal, Node]}" iconType=""></TitledIconMock>
                 {:else}
-<!--                    <TitledIconMock scrollMotion="{motion}" title="Portals"></TitledIconMock>-->
-                    <MockItem motion="{motion}">You want to see what in here?</MockItem>
+                    <TitledIconMock scrollMotion="{motion}" title="Portal" icons="{[faGithub, faLinkedin]}"></TitledIconMock>
                 {/if}
             </Motion>
         </AnimatePresence>
