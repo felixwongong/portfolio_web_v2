@@ -17,7 +17,7 @@
 >
     <div class="flex flex-col justify-start flex-wrap prose">
         <h2 class="block" contenteditable>A Game Developer, and Web Developer</h2>
-        <p class="block" contenteditable>...and a non-stop learner</p>
+        <p class="block" contenteditable>...and a learner</p>
         <button class="btn">My Work</button>
     </div>
     <div class="card glass card-bordered card-side card-compact shadow-xl h-fit w-fit mx-auto">
