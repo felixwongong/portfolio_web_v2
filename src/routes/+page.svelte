@@ -1,5 +1,5 @@
 <script>
-    import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
+    import {faGithub, faLinkedin, faItchIo} from "@fortawesome/free-brands-svg-icons";
 
     import Hero from "./Hero.svelte";
     import {EmoBar, Message, MockSection, ParticlesBG, Playground} from "$lib/props";
@@ -49,11 +49,11 @@
 
 <Hero/>
 
-<div class="divider max-w-screen-sm mx-auto">I AM DIVIDER 1</div>
+<div class="divider max-w-screen-sm mx-auto">I AM --DIVIDER-- 1</div>
 
 <Playground/>
 
-<div class="divider max-w-screen-sm mx-auto">I GO TO SCHOOL BY BUS</div>
+<div class="divider max-w-screen-sm mx-auto">I GO TO 🏫 BY 🚌</div>
 
 <MockSection class="relative">
     <ParticlesBG/>
@@ -80,7 +80,12 @@
                 {:else if Math.abs(isOn) % 3 === 1}
                     <TitledIconMock scrollMotion="{motion}" title="Survival Tools" icons="{[Unity, Unreal, Node]}" iconType=""></TitledIconMock>
                 {:else}
-                    <TitledIconMock scrollMotion="{motion}" title="Portal" icons="{[faGithub, faLinkedin]}"></TitledIconMock>
+                    <TitledIconMock scrollMotion="{motion}" title="Portal"
+                                    iconObjs="{[
+                                        {icon: faGithub, title: 'Check my repo!', href:'https://github.com/felixwongong', hrefName: 'HERE🔗'},
+                                        {icon: faLinkedin, title: 'Connect me in', href:'https://www.linkedin.com/in/felix-wong-8a48911b6/', hrefName: 'HERE🔗'},
+                                        {icon: faItchIo, title: 'Prev small projects', href:'https://yuenlfelix.itch.io/', hrefName: 'HERE🔗'},
+                                    ]}"></TitledIconMock>
                 {/if}
             </Motion>
         </AnimatePresence>

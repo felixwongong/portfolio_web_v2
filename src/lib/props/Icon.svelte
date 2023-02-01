@@ -7,8 +7,9 @@
     export let left;
     export let iconType = "fa";
     export let icon;
-    export let tooltipTitle = ""
+    export let title = ""
     export let href = "#";
+    export let hrefName = "Link";
 
 
     let showTooltip = "hidden";
@@ -39,12 +40,12 @@
             </div>
         {/if}
 
-        {#if tooltipTitle}
+        {#if title}
             <Motion animate={v} initial="hidden" let:motion {variants}>
-                <div class="bg-white absolute w-36 h-auto text-center origin-bottom" style="top: {-100}%; left: {-60}%"
+                <div class="bg-secondary absolute w-36 h-auto text-center origin-bottom rounded-box" style="top: {-110}%; left: {-100}%"
                      use:motion>
-                    <div>{tooltipTitle}</div>
-                    <a href="{href}">Some redirect link</a>
+                    <div>{title}</div>
+                    <a class="text-info dark:text-black" href="{href}" target="_blank" rel="noopener noreferrer">{hrefName}</a>
                 </div>
             </Motion>
         {/if}
