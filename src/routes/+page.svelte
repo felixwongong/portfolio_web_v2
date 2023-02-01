@@ -49,11 +49,11 @@
 
 <Hero/>
 
-<div class="divider max-w-screen-sm mx-auto">I AM DIVIDER 1</div>
+<div class="divider max-w-screen-sm mx-auto">I AM --DIVIDER-- 1</div>
 
 <Playground/>
 
-<div class="divider max-w-screen-sm mx-auto">I GO TO SCHOOL BY BUS</div>
+<div class="divider max-w-screen-sm mx-auto">I GO TO 🏫 BY 🚌</div>
 
 <MockSection class="relative">
     <ParticlesBG/>
@@ -82,9 +82,9 @@
                 {:else}
                     <TitledIconMock scrollMotion="{motion}" title="Portal"
                                     iconObjs="{[
-                                        {icon: faGithub, title: 'Check my repo!', href:'https://github.com/felixwongong', hrefName: 'HERE'},
-                                        {icon: faLinkedin, title: 'Connect me in', href:'https://www.linkedin.com/in/felix-wong-8a48911b6/', hrefName: 'HERE'},
-                                        {icon: faItchIo, title: 'Prev small projects', href:'https://yuenlfelix.itch.io/', hrefName: 'HERE'},
+                                        {icon: faGithub, title: 'Check my repo!', href:'https://github.com/felixwongong', hrefName: 'HERE🔗'},
+                                        {icon: faLinkedin, title: 'Connect me in', href:'https://www.linkedin.com/in/felix-wong-8a48911b6/', hrefName: 'HERE🔗'},
+                                        {icon: faItchIo, title: 'Prev small projects', href:'https://yuenlfelix.itch.io/', hrefName: 'HERE🔗'},
                                     ]}"></TitledIconMock>
                 {/if}
             </Motion>

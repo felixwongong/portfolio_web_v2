@@ -42,12 +42,16 @@
                 <li><a href="/">Post</a></li>
             </ul>
         </div>
-        <a class="btn btn-ghost normal-case text-xl" href="/">Felix Wong</a>
+        <a class="btn btn-ghost normal-case text-xl" href="/">Felix Wong☕</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="/">Work</a></li>
-            <li><a href="/">Post</a></li>
+            <div class="tooltip tooltip-bottom tooltip-info" data-tip="Not available yet😢">
+                <li><a href="/">🧑🏼‍💻Work</a></li>
+            </div>
+            <div class="tooltip tooltip-bottom tooltip-info" data-tip="Not available yet😢">
+                <li><a href="/">📖Post</a></li>
+            </div>
         </ul>
     </div>
     <div class="navbar-end">
