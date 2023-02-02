@@ -7,6 +7,8 @@
     import chair from "$lib/assets/model/chair.glb"
     import desk from "$lib/assets/model/desk.glb"
     import Setting from "$lib/svelte-three/Setting/Setting.svelte";
+
+    console.log(chair)
 </script>
 
 <section class="h-screen w-full">

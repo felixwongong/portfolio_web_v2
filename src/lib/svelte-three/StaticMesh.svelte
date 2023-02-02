@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {getContext, onDestroy, onMount} from "svelte";
-    import {Group, LoadingManager, Scene} from "three";
+    import {getContext, onDestroy} from "svelte";
+    import {LoadingManager, Scene} from "three";
     import {ContextKey} from "./ContextKey";
     import TransformComp from "./ComponentClass/TransformComp";
 
@@ -27,7 +27,6 @@
         if(transform.rotation != mesh.rotation) {
             mesh.rotation.set(...transform.rotation);
         }
-
     })
 
     AddComponent(m_mesh)
