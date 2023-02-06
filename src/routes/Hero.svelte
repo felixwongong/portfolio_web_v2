@@ -19,7 +19,7 @@
                     <Transform/>
                     <StaticMesh src={chair}></StaticMesh>
                 </GameObject>
-                <GameObject>
+                <GameObject name="desk">
                     <Transform position={new Vector3(0, 0, 0.3)}/>
                     <StaticMesh src={desk}></StaticMesh>
                 </GameObject>

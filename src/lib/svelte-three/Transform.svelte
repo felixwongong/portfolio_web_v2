@@ -11,7 +11,8 @@
     export let rotation: Euler = new Euler();
     export let scale: Vector3 = new Vector3(1,1,1);
 
-    AddComponent(new TransformComp(position, rotation, scale));
+    const name = getContext(ContextKey.NAME);
+    AddComponent(new TransformComp(position, rotation, scale, name));
     
     let m_transform: TransformComp;
     m_transform = GetComponent(TransformComp.name);

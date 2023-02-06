@@ -9,9 +9,7 @@
 
     let transform: TransformComp;
 
-    onMount(() => {
-        transform = GetComponent(TransformComp.name);
-    })
+    transform = GetComponent(TransformComp.name);
 
     Update(() => {
         transform.rotation.y += 0.01;

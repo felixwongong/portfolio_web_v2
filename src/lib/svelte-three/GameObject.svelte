@@ -3,6 +3,7 @@
     import type {Component, ComponentFunc} from "./ComponentClass/Component";
     import {ContextKey} from "./ContextKey.ts";
 
+    export let name = "Default GameObject";
     export let components: Component[] = [];
 
 
@@ -12,6 +13,7 @@
     }
 
     setContext(ContextKey.COMP_FUNC, func);
+    setContext(ContextKey.NAME, name);
 
 
     function GetComponent<T extends Component>(typeName: string): T {

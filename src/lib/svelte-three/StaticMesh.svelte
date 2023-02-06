@@ -12,7 +12,7 @@
 
     const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
     const scene = getContext<Writable<Scene>>(ContextKey.SCENE_STORE);
-    const {Start ,Update} = getContext<EventFunc>(ContextKey.HOOK);
+    const {Start} = getContext<EventFunc>(ContextKey.HOOK);
 
 
     export let src:string;
@@ -21,25 +21,14 @@
 
     let m_mesh: MeshComp = new MeshComp();
 
-    Update(() => {
-        const mesh = m_mesh?.mesh;
-        if(!mesh) return;
-        if(transform.rotation != mesh.rotation) {
-            mesh.rotation.set(...transform.rotation);
-        }
-    })
-
     AddComponent(m_mesh)
 
     Start(async () => {
         loader.load(src, function (fbx) {
             const mesh = fbx.scene.children[0];
             m_mesh.mesh = mesh;
+            transform.bind(m_mesh.mesh);
             $scene.add(mesh);
-
-            if(transform.position != mesh.position) {
-                mesh.position.set(...transform.position);
-            }
         }, undefined, function (err) {
             console.log(err)
         })
