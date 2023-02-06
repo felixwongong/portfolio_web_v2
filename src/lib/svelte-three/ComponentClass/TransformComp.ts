@@ -1,5 +1,5 @@
 import {Component} from "./Component";
-import {Euler, Group, Object3D, Vector3} from "three";
+import {Euler, Group, Object3D, Scene, Vector3} from "three";
 
 class TransformComp extends Component {
     group: Group;
@@ -27,7 +27,11 @@ class TransformComp extends Component {
 
     bind(obj: Object3D) {
         this.group.add(obj);
-        console.log(this.group)
+        console.log(obj)
+    }
+
+    addToScene(scene: Scene) {
+        scene.add(this.group)
     }
 }
 

@@ -27,8 +27,7 @@
         loader.load(src, function (fbx) {
             const mesh = fbx.scene.children[0];
             m_mesh.mesh = mesh;
-            transform.bind(m_mesh.mesh);
-            $scene.add(mesh);
+            transform.bind(mesh);
         }, undefined, function (err) {
             console.log(err)
         })
