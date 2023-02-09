@@ -1,4 +1,5 @@
 class ContextKey {
+    static NAME: string = "name";
     static SCENE_STORE: string = "s_scene";
     static RENDER_STORE: string = "s_renderer";
     static CAM_STORE: string = "s_setCam";

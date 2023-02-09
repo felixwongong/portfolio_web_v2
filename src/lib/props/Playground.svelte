@@ -24,7 +24,7 @@
         <div class="w-1/3 my-auto">
             <Canvas>
                 <Scene>
-                    <GameObject>
+                    <GameObject name="coffee">
                         <Transform/>
                         <StaticMesh src={coffee}></StaticMesh>
                         <Rotator/>
