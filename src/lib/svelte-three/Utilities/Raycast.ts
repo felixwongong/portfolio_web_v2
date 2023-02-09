@@ -9,23 +9,31 @@ export default class RaycastUtil {
     }
 
 
-     Raycast(cam: Camera , rend: Renderer, clickPos: Vector2, sc: Scene, recursive = false, debug = false) {
+     Raycast(cam: Camera , rend: Renderer, clickPos: Vector2, sc: Scene, recursive = true, debug = false) {
         const pointer = new Vector2();
         const canvasEl = rend.domElement;
         pointer.x = (clickPos.x / canvasEl.offsetWidth) * 2 - 1;
         pointer.y = -(clickPos.y / canvasEl.offsetHeight) * 2 + 1;
 
         this.raycaster.setFromCamera(pointer, cam);
-        const intersects = this.raycaster.intersectObjects(sc.children, recursive);
+        let intersects = this.raycaster.intersectObjects(sc.children, recursive);
+
+        //TODO: Need fix hard code filtering with layer.
+        intersects = intersects.filter(s => {
+            return s.object.type == "Mesh" && s.object.parent && s.object.parent.type == "Group";
+        });
 
         if (debug && intersects.length > 0) {
             const cube = new Mesh(new BoxGeometry(), new MeshNormalMaterial())
+            cube.name = "Debug cube";
             cube.scale.set(0.1, 0.1, 0.1);
             const point = intersects[0].point;
             cube.position.set(point.x, point.y, point.z);
             sc.add(cube);
         }
-        return intersects;
+
+         const groups = intersects.map((i) => i.object.parent);
+        return groups;
     }
 }
 

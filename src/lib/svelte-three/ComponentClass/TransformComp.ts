@@ -6,7 +6,6 @@ class TransformComp extends Component {
 
     get position(): Vector3 {return this.group.position;}
     get rotation(): Euler {
-        console.log(this.group)
         return this.group.rotation;
     }
     get scale(): Vector3 {return this.group.scale;}
@@ -27,7 +26,6 @@ class TransformComp extends Component {
 
     bind(obj: Object3D) {
         this.group.add(obj);
-        console.log(obj)
     }
 
     addToScene(scene: Scene) {

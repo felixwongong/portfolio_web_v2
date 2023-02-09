@@ -1,8 +1,8 @@
 <script lang="ts">
     import {TransformControls} from "../three/TransformControls.js";
-    import {getContext, onDestroy, onMount} from "svelte";
+    import {getContext, onDestroy } from "svelte";
     import {ContextKey} from "../ContextKey";
-    import {Camera, Mesh, Object3D, Scene, Vector2} from "three";
+    import {Camera, Group, Mesh, Object3D, Scene, Vector2} from "three";
     import { EMode, Mode } from "../Setting/Setting.ts";
     import RaycastUtil from "../Utilities/Raycast.ts";
 
@@ -30,7 +30,7 @@
         const clickPos = new Vector2(event.offsetX, event.offsetY);
         const hits = rc.Raycast($cam, $renderer, clickPos, $scene)
         if(hits.length > 0) {
-            const obj = hits[0].object;
+            const obj = hits[0];
             control.attach(obj)
             lastHitObject = obj;
         }
@@ -60,7 +60,7 @@
     }
 
     function SelectRandomObject() {
-        if(lastHitObject == null) lastHitObject = $scene.children.find((obj) => obj as Mesh);
+        if(lastHitObject == null) lastHitObject = $scene.children.find((obj) => obj as Group);
         if(!control.object) {
             control.attach(lastHitObject);
         }

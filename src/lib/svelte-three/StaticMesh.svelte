@@ -8,6 +8,8 @@
     import type {Writable} from "svelte/store";
     import {MeshComp} from "./ComponentClass";
     import type {EventFunc} from "./Hooks";
+    import {layerIndex} from "./layerIndex";
+
     const loader = new GLTFLoader(getContext<LoadingManager>(ContextKey.LOADING));
 
     const {AddComponent, GetComponent} = getContext(ContextKey.COMP_FUNC);
