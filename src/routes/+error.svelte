@@ -1,8 +1,9 @@
 <script lang="ts">
 
-import {Canvas, Scene, GameObject, Transform , Perspective, ThreeText} from "$lib/svelte-three";
+import {Canvas, Scene, GameObject, Transform , Perspective, StaticMesh} from "$lib/svelte-three";
 import {DirectionalLight, AmbientLight} from "$lib/svelte-three/Light";
 import {Object3D, Vector3} from "three";
+import chair from "$lib/assets/model/chair.glb"
 
 </script>
 
@@ -11,7 +12,10 @@ import {Object3D, Vector3} from "three";
         <Scene>
             <GameObject>
                 <Transform/>
-                <ThreeText/>
+                <StaticMesh src={chair}></StaticMesh>
+            </GameObject>
+            <GameObject name="desk">
+                <Transform position={new Vector3(0, 0, 0.3)}/>
             </GameObject>
             <GameObject>
                 <Transform position={Object3D.DefaultUp}/>
